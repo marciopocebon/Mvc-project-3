@@ -1,0 +1,223 @@
+﻿@model UltimateLabs.Web.Models.AsignarUserModel
+@{
+    ViewBag.Title = "Asignar";
+    Layout = "~/Views/Shared/_LayoutTry.cshtml";
+
+}
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Roboto" rel="stylesheet">
+    @Styles.Render("~/Content/CSS/Styles.css")
+    @Styles.Render("~/Content/basic.css")
+    @Styles.Render("~/Content/dropzone.css")
+    @Styles.Render("~/Content/Register.css")
+    <script src="~/Scripts/jquery.filedrop.js"></script>
+    <link rel="stylesheet" href="~/Content/basic.css" />
+    <link rel="stylesheet" href="~/Content/dropzone.css" />
+    <script src="~/Scripts/dropzone.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/ThemeAdmin/css")
+
+    @*<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>*@
+</head>
+
+
+
+<div class="panel panel-inverse">
+
+
+        <h6 style="color:#02779d;margin-left:3%;font-family:'Roboto',sans-serif">Seguridad > Asignar Roles</h6>
+        <h3 style="color:#02779d;font-family:'Roboto',sans-serif" class="text-center">Asignar Roles</h3>
+
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+
+
+
+                    @{var user = TempData["user"];}
+                    <div class="col-md-12 contenedor">
+                        <div class="table-responsive">
+                            <table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Rol</th>
+                                        <th>Asignar</th>
+                                        <th>Resetear Contraseña</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int cont = 1;}
+                                    @foreach (var item in Model.Usuarios)
+                                    {
+                                        <tr>
+                                            <td>@cont</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.NameRol</td>
+                                            <td><span data-placement="top" data-toggle="tooltip" title="Asignar"><button class="btn btn-primary btn-xs" data-content="@item.Id" onclick="SetID(this);" data-title="Asign" data-toggle="modal" data-target="#asign"><span class="fa fa-user-plus"></span></button></span></td>
+                                            <td><span data-placement="top" data-toggle="tooltip" title="Resetear"><button class="btn btn-danger btn-xs" data-content="@item.Id" onclick="SetIDD(this);" data-title="Reset" data-toggle="modal" data-target="#reset"><span class="fa fa-key"></span></button></span></td>
+                                        </tr>
+                                        cont++;
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="asign" tabindex="-1" role="dialog" aria-labelledby="asign" @*aria-hidden="true"*@ style="background-color:white">
+                    <div class="modal-dialog modal-dialog2">
+                        <div class="modal-content contenedor">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                            </div>
+                            @using (Html.BeginForm("Asignando", "Roles", FormMethod.Post, new { id = "signupform", enctype = "multipart/form-data" }))
+                            {
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <select style="height:60px" class="form-control" data-val="true" data-val-required="The Id field is required." id="IdRol" name="IdRol">
+                                            <option class="form-control" value="" style="height:10px">-- Seleccione Rol--</option>
+                                            @foreach (var item in ViewBag.listRoles)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                 
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-12" style=" height:1mm; width:1mm; padding:1mm 1mm 1mm 1mm">
+                                        @Html.TextAreaFor(x => x.Id, new { style = "visibility:hidden;  height:1mm; width:1mm; padding:1mm 1mm 1mm 1mm", @id = "EditarID", @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer ">
+                                    <button type="submit" class="btn" style="width: 100%;">Actualizar</button>
+                                </div>
+                            }
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+
+                <div class="modal fade" id="reset" tabindex="-1" role="dialog" aria-labelledby="reset" aria-hidden="true" style="background-color:white">
+                    <div class="modal-dialog">
+                        <div class="modal-content contenedor">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+
+                            </div>
+                            @using (Html.BeginForm("Resetear", "Roles", FormMethod.Post, new { id = "signupform", enctype = "multipart/form-data" }))
+                            {
+                                <div class="modal-body">
+                                    <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Está seguro que quiere resetear la contraseña?</div>
+                                    <div class="col-sm-12" style=" height:1mm; width:1mm; padding:1mm 1mm 1mm 1mm">
+                                        @Html.TextBoxFor(x => x.Id, new { style = "visibility:hidden;  height:1mm; width:1mm; padding:1mm 1mm 1mm 1mm", @id = "BorrarID", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="modal-footer ">
+                                    <button type="submit" class="btn btn-default">Si</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"> No</button>
+                                </div>
+                            }
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <div class="modal fade" id="confirmacion" tabindex="-1" role="dialog" aria-labelledby="confirm" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                <h4 class="modal-title custom_align" id="Heading">Cambio de Contraseña</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-success"><span class="glyphicon glyphicon-warning-sign"></span> Se ha cambiado la contraseña para @user exitosamente.</div>
+                                <div class="col-sm-12" style=" height:1mm; width:1mm; padding:1mm 1mm 1mm 1mm">
+                                </div>
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="button" class="btn btn-success" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span> Ok</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end panel -->
+
+
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+        $('.datatable').dataTable({
+            "pagingType": "simple_numbers",
+            "language": {
+                "lengthMenu": "Mostrar MENU",
+                "zeroRecords": "No hay resultados",
+                "info": "Mostrando página PAGE de PAGES",
+                "search": "",
+                "infoEmpty": "No hay resultados",
+                "infoFiltered": "(Total registros: MAX)"
+            },
+            "drawCallback": function () {
+                $('.dataTables_paginate').addClass('pagination pull-right');
+            }
+        });
+        $('.datatable').each(function () {
+            var datatable = $(this);
+            // SEARCH - Add the placeholder for Search and Turn this into in-line form control
+            var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
+            search_input.attr('placeholder', 'Buscar');
+            search_input.addClass('form-control input-sm');
+            // LENGTH - Inline-Form control
+            var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
+            length_sel.addClass('form-control input-sm flex');
+        });
+    });</script>
+<script>
+
+    $(document).ready(function () {
+        var user = '@user';
+        if (user !== "") {
+            $("#confirmacion").modal();
+        }
+    });
+
+    function SetID(txt) {
+        var valor = txt.dataset.content;
+        $("#EditarID").val(valor);
+    }
+
+    function SetIDD(txt) {
+        var valor = txt.dataset.content;
+        $("#BorrarID").val(valor);
+    }
+
+    function SelectUser(list) {
+        if (list.value === "") {
+            return false;
+        }
+        else {
+            var dir = '@Url.Action("Index","AsignarUsuario")' + '?cod=' + list.value;
+            window.location.href = dir;
+        }
+
+    }
+</script>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "IndexEditar";
+    Layout = "~/Views/Shared/_LayoutTry.cshtml";
+}
+
+<body class="fontbody">
+    <section style="background-color:#">
+        <h6 style="color:#02779d;margin-left:3%">Noticias > Anuncios</h6>
+        <div class="row">
+            <h3 style="color:#02779d;margin-left:3%" class="text-center">Anuncios</h3>
+            <div style="margin-top:-5%;margin-left:2%">
+
+                @{ Html.RenderAction("EditarNoticia");}
+
+                @{
+                    Html.RenderAction("ListadoNoticia");
+                }
+            </div>
+        </div>
+
+    </section>
+</body>

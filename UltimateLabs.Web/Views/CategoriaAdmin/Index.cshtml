@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutTry.cshtml";
+}
+
+<div class="col-lg-9 col-xs-12" style="background-color:;font-family:">
+    <h6 style="color:#02779d;margin-left:3%;font-family:'Roboto',sans-serif">Productos > Categoría</h6>
+
+    <div>
+        <h3 style="color:#02779d;font-family:'Roboto',sans-serif" class="text-center">Categoría</h3>
+        <div style="margin-top:-5%;margin-left:2%">
+
+            @{ Html.RenderAction("CrearCategoria");}
+
+            @{
+                Html.RenderAction("ListadoCategoria");
+            }
+        </div>
+    </div>
+
+</div>
+

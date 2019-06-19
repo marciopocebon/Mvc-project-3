@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UltimateLabsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreCategoria" Type="varchar(max)" />
+    <Property Name="DescripcionCategoria" Type="varchar(max)" />
+    <Property Name="PathImg" Type="varchar(max)" />
+    <Property Name="IdIdioma" Type="int" />
+    <Property Name="IconPath" Type="varchar(max)" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="Publicar" Type="bit" />
+  </EntityType>
+  <EntityType Name="Configuraciones">
+    <Key>
+      <PropertyRef Name="IdConfiguracion" />
+    </Key>
+    <Property Name="IdConfiguracion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodigoConfiguracion" Type="varchar(max)" />
+    <Property Name="NombreConfiguracion" Type="varchar(max)" />
+    <Property Name="DescripcionConfiguracion" Type="varchar(max)" />
+    <Property Name="Valor" Type="varchar(max)" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar(max)" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioModificacion" Type="varchar(max)" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="IdIdioma" Type="int" />
+    <Property Name="PathImg" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Etiquetas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodEtiqueta" Type="varchar(max)" />
+    <Property Name="DescripcionEtiqueta" Type="varchar(max)" />
+    <Property Name="Valor" Type="varchar(max)" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="Publicar" Type="bit" />
+    <Property Name="IdIdioma" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar(max)" />
+    <Property Name="FechaModificacion" Type="varchar(max)" />
+    <Property Name="UsuarioModificacion" Type="varchar(max)" />
+    <Property Name="multilenguaje" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'UltimateLabs.dbo.fototmp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="fototmp">
+    <Key>
+      <PropertyRef Name="PathIcon" />
+    </Key>
+    <Property Name="PathIcon" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Idiomas">
+    <Key>
+      <PropertyRef Name="IdIdioma" />
+    </Key>
+    <Property Name="IdIdioma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Idioma" Type="varchar(max)" Nullable="false" />
+    <Property Name="Abreviatura" Type="varchar(max)" />
+    <Property Name="IconPath" Type="varchar(max)" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="Noticias">
+    <Key>
+      <PropertyRef Name="IdNoticia" />
+    </Key>
+    <Property Name="IdNoticia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="varchar(max)" />
+    <Property Name="DescripcionCorta" Type="varchar(max)" />
+    <Property Name="DescripcionLarga" Type="varchar(max)" />
+    <Property Name="Autor" Type="varchar(max)" />
+    <Property Name="PathPortada" Type="varchar(max)" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar(max)" />
+    <Property Name="FechaModificacion" Type="varchar(max)" />
+    <Property Name="UsuarioModificacion" Type="varchar(max)" />
+    <Property Name="IdIdioma" Type="int" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="Publicar" Type="bit" />
+  </EntityType>
+  <EntityType Name="Presentaciones">
+    <Key>
+      <PropertyRef Name="IdPresentacion" />
+    </Key>
+    <Property Name="IdPresentacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PresentacionProducto" Type="varchar(max)" />
+    <Property Name="DescripcionCorta" Type="varchar(max)" />
+    <Property Name="DescripcionLarga" Type="varchar(max)" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="IdIdioma" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar(max)" />
+    <Property Name="FechaModificacion" Type="varchar(max)" />
+    <Property Name="UsuarioModificacion" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="PresentacionXProducto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProducto" Type="int" />
+    <Property Name="IdPresentacion" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar(max)" />
+    <Property Name="FechaModificacion" Type="varchar(max)" />
+    <Property Name="UsuarioModificacion" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ProductoFotografias">
+    <Key>
+      <PropertyRef Name="IdFotografia" />
+    </Key>
+    <Property Name="IdFotografia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PathFoto" Type="varchar(max)" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="Publicar" Type="bit" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar(max)" />
+    <Property Name="FechaModificacion" Type="varchar(max)" />
+    <Property Name="UsuarioModificacion" Type="varchar(max)" />
+    <Property Name="CodigoMaestro" Type="int" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreProducto" Type="varchar(max)" />
+    <Property Name="NombreComun" Type="varchar(max)" />
+    <Property Name="DescripcionCortaProducto" Type="varchar(max)" />
+    <Property Name="DescripcionLargaProducto" Type="varchar(max)" />
+    <Property Name="Indicaciones" Type="varchar(max)" />
+    <Property Name="Dosis" Type="varchar(max)" />
+    <Property Name="IdCategoria" Type="int" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="Publicar" Type="bit" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar(max)" />
+    <Property Name="FechaModificacion" Type="varchar(max)" />
+    <Property Name="UsuarioModificacion" Type="varchar(max)" />
+    <Property Name="IdIdioma" Type="int" />
+    <Property Name="PathImg" Type="varchar(max)" />
+    <Property Name="Presentacion" Type="varchar(max)" />
+    <Property Name="CodigoMaestro" Type="int" />
+    <Property Name="IdTipoBullet" Type="int" />
+  </EntityType>
+  <EntityType Name="SliderImg">
+    <Key>
+      <PropertyRef Name="IdImg" />
+    </Key>
+    <Property Name="IdImg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Frase" Type="varchar(max)" />
+    <Property Name="PathImg" Type="varchar(max)" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="Publicar" Type="bit" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar(max)" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioModificacion" Type="varchar(max)" />
+    <Property Name="IdIdioma" Type="int" />
+    <Property Name="Titulo" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TipoBullet">
+    <Key>
+      <PropertyRef Name="IdTipoBullet" />
+    </Key>
+    <Property Name="IdTipoBullet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreBullet" Type="varchar(max)" />
+    <Property Name="PathIcon" Type="varchar(max)" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar(max)" />
+    <Property Name="FechaModificacion" Type="varchar(max)" />
+    <Property Name="UsuarioModificacion" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tmpFoto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PathIcon" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tmpProductoFotografias">
+    <Key>
+      <PropertyRef Name="IdFotografia" />
+    </Key>
+    <Property Name="IdFotografia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PathFoto" Type="varchar(max)" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="Publicar" Type="bit" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar(max)" />
+    <Property Name="FechaModificacion" Type="varchar(max)" />
+    <Property Name="UsuarioModificacion" Type="varchar(max)" />
+    <Property Name="CodigoMaestro" Type="int" />
+  </EntityType>
+  <Association Name="FK__Categoria__IdIdi__5AEE82B9">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="Categorias">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Configura__IdIdi__5BE2A6F2">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="Configuraciones" Type="Self.Configuraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="Configuraciones">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Etiquetas__IdIdi__5CD6CB2B">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="Etiquetas" Type="Self.Etiquetas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="Etiquetas">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Noticias__IdIdio__5DCAEF64">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="Noticias" Type="Self.Noticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="Noticias">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Presentac__IdIdi__5EBF139D">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="Presentaciones" Type="Self.Presentaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="Presentaciones">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Presentac__IdPre__60A75C0F">
+    <End Role="Presentaciones" Type="Self.Presentaciones" Multiplicity="0..1" />
+    <End Role="PresentacionXProducto" Type="Self.PresentacionXProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presentaciones">
+        <PropertyRef Name="IdPresentacion" />
+      </Principal>
+      <Dependent Role="PresentacionXProducto">
+        <PropertyRef Name="IdPresentacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Presentac__IdPro__5FB337D6">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+    <End Role="PresentacionXProducto" Type="Self.PresentacionXProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="PresentacionXProducto">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Productos__IdCat__628FA481">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Productos__IdIdi__6383C8BA">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Productos__IdTip__03F0984C">
+    <End Role="TipoBullet" Type="Self.TipoBullet" Multiplicity="0..1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoBullet">
+        <PropertyRef Name="IdTipoBullet" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="IdTipoBullet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SliderImg__IdIdi__6477ECF3">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="SliderImg" Type="Self.SliderImg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="SliderImg">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UltimateLabsModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Configuraciones" EntityType="Self.Configuraciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Etiquetas" EntityType="Self.Etiquetas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Idiomas" EntityType="Self.Idiomas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Noticias" EntityType="Self.Noticias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Presentaciones" EntityType="Self.Presentaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PresentacionXProducto" EntityType="Self.PresentacionXProducto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductoFotografias" EntityType="Self.ProductoFotografias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SliderImg" EntityType="Self.SliderImg" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoBullet" EntityType="Self.TipoBullet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tmpFoto" EntityType="Self.tmpFoto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tmpProductoFotografias" EntityType="Self.tmpProductoFotografias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fototmp" EntityType="Self.fototmp" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [fototmp].[PathIcon] AS [PathIcon]
+    FROM [dbo].[fototmp] AS [fototmp]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Categoria__IdIdi__5AEE82B9" Association="Self.FK__Categoria__IdIdi__5AEE82B9">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Categorias" EntitySet="Categorias" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Configura__IdIdi__5BE2A6F2" Association="Self.FK__Configura__IdIdi__5BE2A6F2">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Configuraciones" EntitySet="Configuraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Etiquetas__IdIdi__5CD6CB2B" Association="Self.FK__Etiquetas__IdIdi__5CD6CB2B">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Etiquetas" EntitySet="Etiquetas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Noticias__IdIdio__5DCAEF64" Association="Self.FK__Noticias__IdIdio__5DCAEF64">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Noticias" EntitySet="Noticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Presentac__IdIdi__5EBF139D" Association="Self.FK__Presentac__IdIdi__5EBF139D">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Presentaciones" EntitySet="Presentaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Presentac__IdPre__60A75C0F" Association="Self.FK__Presentac__IdPre__60A75C0F">
+      <End Role="Presentaciones" EntitySet="Presentaciones" />
+      <End Role="PresentacionXProducto" EntitySet="PresentacionXProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Presentac__IdPro__5FB337D6" Association="Self.FK__Presentac__IdPro__5FB337D6">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="PresentacionXProducto" EntitySet="PresentacionXProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Productos__IdCat__628FA481" Association="Self.FK__Productos__IdCat__628FA481">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Productos__IdIdi__6383C8BA" Association="Self.FK__Productos__IdIdi__6383C8BA">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Productos__IdTip__03F0984C" Association="Self.FK__Productos__IdTip__03F0984C">
+      <End Role="TipoBullet" EntitySet="TipoBullet" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SliderImg__IdIdi__6477ECF3" Association="Self.FK__SliderImg__IdIdi__6477ECF3">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="SliderImg" EntitySet="SliderImg" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

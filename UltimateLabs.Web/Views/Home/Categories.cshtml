@@ -1,0 +1,25 @@
+﻿@model IEnumerable<UltimateLabs.Web.Models.CategoriasViewModel>
+
+
+
+
+<ul class="mega-menu">
+
+
+        @if (Model != null)
+        {
+           
+        <li>
+            <ul>
+                @foreach (var data in Model)
+                {
+
+                    <li><a href='@Url.Action("List","Products", new {CodCategoria = data.CodCaegoria })'>@data.NombreCategoria</a></li>
+
+                }
+            </ul>
+        </li>
+        }
+
+
+    </ul>

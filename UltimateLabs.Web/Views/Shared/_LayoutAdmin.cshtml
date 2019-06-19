@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+    @Styles.Render("~/")
+    @Scripts.Render("~/bundles/dropzone")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+    <title>Ultimate Labs</title>
+    <link rel="shortcut icon" href="~/Content/Template/Imagenes/LogoUltimate.jpg">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Roboto" rel="stylesheet">
+
+    <link href="~/Content/CSS/Styles.css" />
+</head>
+
+
+<body style="font-family:'Roboto',sans-serif" class=" modal-backdrop-soft modal-open sidebar-offcanvas">
+    @RenderSection("Scripts", required: false)
+    <div class="layout-container theme-5">
+        <!-- top navbar-->
+        <header class="header-container">
+            <nav>
+                <ul class="">
+                    <li><a id="offcanvas-toggler" href="#" class="menu-link menu-link-slide"><span><em></em></span></a></li>
+                </ul>
+                <h2 class="header-title"></h2>
+                <ul class="pull-right">
+                    <li><a id="header-search" href="#" class="ripple"><em class="ion-ios-search-strong"></em></a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle has-badge ripple"><em class="ion-person"></em></a>
+                        <ul class="dropdown-menu dropdown-menu-right md-dropdown-menu">
+                            <li><a href="profile.html"><em class="ion-home icon-fw"></em>Profile</a></li>
+                            <li><a href="messages.html"><em class="ion-gear-a icon-fw"></em>Messages</a></li>
+                            <li role="presentation" class="divider"></li>
+                            <li><a href=""><em class="ion-log-out icon-fw"></em>Logout</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="header-settings" href="#" class="ripple"><em class="ion-gear-b"></em></a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- sidebar-->
+        <aside class="sidebar-container bg-white">
+            <div class="sidebar-header" style="background-color:white; color:black;">
+                <br />
+                <br />
+                <br />
+                <img id="img_logo" alt="Logo" src="@Url.Content("~/Content/Template/Imagenes/LogoUltimate.jpg")" style="margin-left:10%" />
+            </div>
+            <div class="sidebar-content">
+                <div class="sidebar-toolbar text-center">
+
+                    <div class="mt"></div>
+                </div>
+                <nav class="sidebar-nav">
+                    <ul>
+
+
+
+
+                        <li>
+                            <a href="#" class="ripple"><span class="pull-right nav-caret"><em class="fa fa-angle-right"></em></span><span class="pull-right nav-label"></span><span class="nav-icon"><img src="" data-svg-replace="/ThemeAdmin/html5jquery/app/img/icons/grid.svg" alt="MenuItem" class="hidden"></span><span>Productos</span></a>
+                            <ul id="pages" class="sidebar-subnav">
+                                <li><a href="@Url.Action("Index","CategoriaAdmin")" class="ripple"><span class="pull-right nav-label"></span><span>Categoría</span></a></li>
+                                <li><a href="@Url.Action("Index","ProductoAdmin")" class="ripple"><span class="pull-right nav-label"></span><span>Productos</span></a></li>
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <a href="#" class="ripple"><span class="pull-right nav-caret"><em class="fa fa-angle-right"></em></span><span class="pull-right nav-label"></span><span class="nav-icon"><img src="" data-svg-replace="/ThemeAdmin/html5jquery/app/img/icons/clipboard.svg" alt="MenuItem" class="hidden"></span><span>Mantenimientos</span></a>
+                            <ul class="sidebar-subnav">
+                                <li><a href="@Url.Action("Index","IdiomaAdmin")" class="ripple"><span class="pull-right nav-label"></span><span>Idiomas</span></a></li>
+
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <a href="#" class="ripple"><span class="pull-right nav-caret"><em class="fa fa-angle-right"></em></span><span class="pull-right nav-label"></span><span class="nav-icon"><img src="" data-svg-replace="/ThemeAdmin/html5jquery/app/img/icons/radio-waves.svg" alt="MenuItem" class="hidden"></span><span>Configuraciones</span></a>
+                            <ul id="pages" class="sidebar-subnav">
+                                <li><a href="@Url.Action("IndexGeneral","ConfiguracionGeneralAdmin")" class="ripple"><span class="pull-right nav-label"></span><span>Generales</span></a></li>
+                                <li><a href="@Url.Action("Index","EtiquetaAdmin")" class="ripple"><span class="pull-right nav-label"></span><span>Etiquetas</span></a></li>
+                                <li><a href="@Url.Action("Index","CarruselAdmin")" class="ripple"><span class="pull-right nav-label"></span><span>Carrusel Principal</span></a></li>
+                            </ul>
+                        </li>
+
+
+
+                        <li>
+                            <a href="#" class="ripple"><span class="pull-right nav-caret"><em class="fa fa-angle-right"></em></span><span class="pull-right nav-label"></span><span class="nav-icon"><img src="" data-svg-replace="/ThemeAdmin/html5jquery/app/img/icons/ios-browsers.svg" alt="MenuItem" class="hidden"></span><span>Noticias</span></a>
+                            <ul id="user" class="sidebar-subnav">
+                                <li><a href="@Url.Action("Index", "NoticiaAdmin")" class="ripple"><span class="pull-right nav-label"></span><span>Anuncios</span></a></li>
+                                @*<li><a href="@Url.Action("ListadoBlog", "BlogAdmin")" class="ripple"><span class="pull-right nav-label"></span><span>Blog</span></a></li>
+                                    <li><a href="@Url.Action("ListadoReceta", "RecetaAdmin")" class="ripple"><span class="pull-right nav-label"></span><span>Recetas</span></a></li>
+                                    <li><a href="@Url.Action("ListadoCategoriaReceta", "RecetaCategoriaAdmin")" class="ripple"><span class="pull-right nav-label"></span><span>Categoría Recetas</span></a></li>*@
+                                @*<li><a href="@Url.Action("RoleAddToUser", "Account")" class="ripple"><span class="pull-right nav-label"></span><span>Asignar Roles</span></a></li>*@
+                            </ul>
+                        </li>
+
+                        @*<li>
+                                <a href="#" class="ripple"><span class="pull-right nav-caret"><em class="ion-ios-arrow-right"></em></span><span class="pull-right nav-label"></span><span class="nav-icon"><img src="" data-svg-replace="/ThemeAdmin/html5jquery/app/img/icons/connection-bars.svg" alt="MenuItem" class="hidden"></span><span>Reportes</span></a>
+                                <ul id="pages" class="sidebar-subnav">
+                                    <li><a href="" class="ripple"><span class="pull-right nav-label"></span><span>Ventas Mensuales</span></a></li>
+                                </ul>
+                            </li>*@
+
+                        <li>
+                            <a href="#" class="ripple"><span class="pull-right nav-caret"><em class="fa fa-angle-right"></em></span><span class="pull-right nav-label"></span><span class="nav-icon"><img src="" data-svg-replace="/ThemeAdmin/html5jquery/app/img/icons/person-stalker.svg" alt="MenuItem" class="hidden"></span><span>Seguridad</span></a>
+                            <ul id="user" class="sidebar-subnav">
+                                <li><a href="" class="ripple"><span class="pull-right nav-label"></span><span>Listado Usuarios</span></a></li>
+                                <li><a href="" class="ripple"><span class="pull-right nav-label"></span><span>Crear Usuarios</span></a></li>
+                                <li><a href="" class="ripple"><span class="pull-right nav-label"></span><span>Crear Roles</span></a></li>
+                                @*<li><a href="@Url.Action("RoleAddToUser", "Account")" class="ripple"><span class="pull-right nav-label"></span><span>Asignar Roles</span></a></li>*@
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="sidebar-layout-obfuscator"></div>
+        <!-- Main section-->
+        <main class="main-container">
+
+            @RenderBody()
+
+            <!-- Page footer-->
+            <footer>
+                <p>© 2018 Copyright Creative Information Technologies <a href="http://www.cit.hn/" target="_blank">CIT</a></p>
+            </footer>
+        </main>
+    </div>
+    <!-- Search template-->
+    <div tabindex="-1" role="dialog" class="modal modal-top fade modal-search">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="pull-left">
+                        <button type="button" data-dismiss="modal" class="btn btn-flat"><em class="ion-arrow-left-c icon-24"></em></button>
+                    </div>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-flat"><em class="ion-android-microphone icon-24"></em></button>
+                    </div>
+                    <form action="#" class="oh">
+                        <div class="mda-form-control pt0">
+                            <input type="text" placeholder="Search.." data-localize="header.SEARCH" class="form-control header-input-search">
+                            <div class="mda-form-control-line"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Search template-->
+    <!-- Settings template-->
+    <div tabindex="-1" role="dialog" class="modal-settings modal modal-right fade" style="display: none;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div data-dismiss="modal" class="pull-right clickable"><em class="ion-close-round text-soft"></em></div>
+                    <h4 class="modal-title"><span>Settings</span></h4>
+                </div>
+                <div class="modal-body">
+                    <hr>
+                    <p>
+                        <label class="mda-checkbox">
+                            <input id="sidebar-showheader" type="checkbox" checked=""><em class="bg-indigo-500"></em>Sidebar header
+                        </label>
+                    </p>
+                    <p>
+                        <label class="mda-checkbox">
+                            <input id="sidebar-showtoolbar" type="checkbox" checked=""><em class="bg-indigo-500"></em>Sidebar toolbar
+                        </label>
+                    </p>
+                    <p>
+                        <label class="mda-checkbox">
+                            <input id="sidebar-offcanvas" type="checkbox"><em class="bg-indigo-500"></em>Sidebar offcanvas
+                        </label>
+                    </p>
+                    <hr>
+                    <p>Change language</p>
+                    <!-- START Language list-->
+                    <div class="btn-group">
+                        <button type="button" data-toggle="dropdown" class="btn btn-default btn-block btn-raised">English</button>
+                        <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
+                            <li><a href="#" data-set-lang="en">English</a></li>
+                            <li><a href="#" data-set-lang="es">Spanish</a></li>
+                        </ul>
+                    </div>
+                    <!-- END Language list-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Settings template-->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/pluginsAdmin")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @Styles.Render("~/Content/CSS/Sidebar.css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
+<script>
+    var userAgent = window.navigator.userAgent.toLowerCase(),
+        smartphone = /android|iphone/.test(userAgent);
+
+    function useragent() {
+        var clase = localStorage.getItem("Tema"); null === clase && (clase = "theme-1"), document.body.classList.replace("theme-1", clase);
+        var e = window.screen.width; "Inactivo" === localStorage.getItem("Menu") ? (document.querySelector("body").classList.add("offcanvas-visible"), document.getElementById("muevete").classList.add("active"), e >= 1920 ? $("#moveaside").css("marginLeft", "13.5%") : e >= 1366 && e <= 1919 ? $("#moveaside").css("marginLeft", "17.9%") : e >= 768 && e <= 811 ? $("#moveaside").css("marginLeft", "31%") : e >= 812 && e <= 1023 ? $("#moveaside").css("marginLeft", "30%") : e >= 1024 && e <= 1279 ? $("#moveaside").css("marginLeft", "23.5%") : e >= 1280 && e <= 1365 && $("#moveaside").css("marginLeft", "19%")) : smartphone && document.getElementById("muevete").hasClass("active") && (document.getElementById("moveaside").style.marginLeft = "1.5%");
+    }
+
+    window.onpaint = useragent();
+
+
+    $(window).on("orientationchange", function (event) {
+        useragent();
+    });
+
+
+    //Al dar click en el icono del menu lateral traer y contraer la seccion "Moveaside".
+    document.getElementById('offcanvas-toggler').onclick = function AbrirPanel(e) {
+        var x = window.screen.width; $("body").hasClass("offcanvas-visible") ? (localStorage.setItem("Menu", "Activo"), smartphone ? $("#moveaside").css("marginLeft", "1.5%") : $("#moveaside").css("marginLeft", "1.1%")) : (localStorage.setItem("Menu", "Inactivo"), x >= 1920 ? $("#moveaside").css("marginLeft", "13.5%") : x >= 1366 && x <= 1919 ? $("#moveaside").css("marginLeft", "17.9%") : x >= 768 && x <= 811 ? $("#moveaside").css("marginLeft", "31%") : x >= 812 && x <= 1023 ? $("#moveaside").css("marginLeft", "30%") : x >= 1024 && x <= 1279 ? $("#moveaside").css("marginLeft", "23.5%") : x >= 1280 && x <= 1365 && $("#moveaside").css("marginLeft", "19%"));
+    };
+
+
+    //Cambia el Color del Icono Camara
+    $("input[name='setting-theme']").click(function () {
+        //var color = $('header').css("background-color");
+        //$("#icono").css("color", color);
+        //var clase = $('body [class*=theme-]').attr("class").match(/(?:\s|^)theme-(\d+)/)[0];
+        //var clase = document.querySelector('body[class^="theme-"]');
+        //var clase = document.querySelector('body[class*="theme-"]').match(/[0-9 -()+]+$/);
+        var clase; localStorage.removeItem("Tema"); var valor = $("input[name=setting-theme]:checked").val(); 0 === valor && (clase = "theme-1"), 1 === valor && (clase = "theme-2"), 2 === valor && (clase = "theme-3"), 3 === valor && (clase = "theme-4"), 4 === valor && (clase = "theme-5"), 5 === valor && (clase = "theme-6"), 7 === valor && (clase = "theme-8"), 8 === valor && (clase = "theme-9"), localStorage.setItem("Tema", clase);
+    });
+</script>

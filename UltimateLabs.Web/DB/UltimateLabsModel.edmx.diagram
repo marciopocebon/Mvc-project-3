@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a19250c5186d49d4a3d2ab50cbe51ae5" Name="Diagram1">
+        <EntityTypeShape EntityType="UltimateLabsModel.Categorias" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UltimateLabsModel.Configuraciones" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UltimateLabsModel.Etiquetas" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UltimateLabsModel.Idiomas" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UltimateLabsModel.Noticias" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UltimateLabsModel.Presentaciones" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UltimateLabsModel.PresentacionXProducto" Width="1.5" PointX="7.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UltimateLabsModel.ProductoFotografias" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UltimateLabsModel.Productos" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UltimateLabsModel.SliderImg" Width="1.5" PointX="3" PointY="24.125" IsExpanded="true" />
+        <AssociationConnector Association="UltimateLabsModel.FK__Categoria__IdIdi__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="UltimateLabsModel.FK__Productos__IdCat__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="UltimateLabsModel.FK__Configura__IdIdi__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="UltimateLabsModel.FK__Etiquetas__IdIdi__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="UltimateLabsModel.FK__Noticias__IdIdio__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="UltimateLabsModel.FK__Presentac__IdIdi__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="UltimateLabsModel.FK__Productos__IdIdi__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="UltimateLabsModel.FK__SliderImg__IdIdi__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="UltimateLabsModel.FK__Presentac__IdPre__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="UltimateLabsModel.FK__Presentac__IdPro__5FB337D6" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UltimateLabsModel.tmpProductoFotografias" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="UltimateLabsModel.C__MigrationHistory" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="UltimateLabsModel.AspNetRoles" Width="1.5" PointX="9.375" PointY="2.5" />
+        <EntityTypeShape EntityType="UltimateLabsModel.AspNetUserClaims" Width="1.5" PointX="13.875" PointY="3.625" />
+        <EntityTypeShape EntityType="UltimateLabsModel.AspNetUserLogins" Width="1.5" PointX="13.875" PointY="1" />
+        <EntityTypeShape EntityType="UltimateLabsModel.AspNetUsers" Width="1.5" PointX="11.625" PointY="1.375" />
+        <AssociationConnector Association="UltimateLabsModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="UltimateLabsModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="UltimateLabsModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="UltimateLabsModel.sysdiagrams" Width="1.5" PointX="9.375" PointY="10.75" />
+        <EntityTypeShape EntityType="UltimateLabsModel.TipoBullet" Width="1.5" PointX="9.375" PointY="7" />
+        <AssociationConnector Association="UltimateLabsModel.FK__Productos__IdTip__03F0984C" />
+        <EntityTypeShape EntityType="UltimateLabsModel.fototmp" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UltimateLabsModel.tmpFoto" Width="1.5" PointX="11.375" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

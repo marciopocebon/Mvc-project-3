@@ -1,0 +1,29 @@
+﻿@model IEnumerable<UltimateLabs.Web.Models.IdiomasViewModel>
+
+@{
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+
+@Styles.Render("~/Theme/css")
+
+@Scripts.Render("~/bundles/Scripts")
+ 
+ 
+ 
+<div class="centrado-porcentual">
+    <img src="~/Content/Template/Video/gifvideo.gif"/>
+    <br />
+    <div class="text-center">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+
+                <a href='@Url.Action("ChangeLanguaje","Home",new {Id=item.IdIdioma })' class="btn btn-primary" style="background-color:#263183">@*<img src="@item.IconPath" style="height:32px;width:32px" />*@  @item.Idioma</a>
+
+            }
+        }
+    </div>
+</div>
+ 

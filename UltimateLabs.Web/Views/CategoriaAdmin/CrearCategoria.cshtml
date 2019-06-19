@@ -1,0 +1,114 @@
+﻿@model UltimateLabs.Web.Models.CategoriaAdminViewModel
+
+@Scripts.Render("~/bundles/jqueryval")
+@Styles.Render("~/ThemeAdmin/css")
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Roboto" rel="stylesheet">
+    @Styles.Render("~/Content/CSS/Styles.css")
+</head>
+
+<section>
+    @using (Html.BeginForm("CrearCategoria", "CategoriaAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        
+        @Html.AntiForgeryToken()
+
+        <div class="col-sm-5 contenedor" style="margin-left:2%;margin-top:5%;background-color:white">
+            <fieldset>
+                <legend style="font-family:'Roboto',sans-serif">
+                    Agregar
+                </legend>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Label("Nombre", new { @class = "col-sm-12 control-label labelText"})
+                        <div class="col-sm-12">
+                            @Html.TextAreaFor(x => x.NombreCategoria, new { @class = "form-control m-bottom-5", @id = "valor", @required = "true" })
+                            @Html.ValidationMessageFor(x => x.NombreCategoria, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Label("Descripción", new { @class = "col-sm-12 control-label labelText m-top-5"})
+                        <div class="col-sm-12">
+                            @Html.TextAreaFor(x => x.DescripcionCategoria, new { @class = "form-control m-bottom-5", @id = "valor" })
+                            @Html.ValidationMessageFor(x => x.DescripcionCategoria, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Label("Idioma", new { @class = "col-sm-12 control-label labelText m-top-5" })
+                        <div class="col-sm-12">
+                            @Html.DropDownListFor(x => x.IdIdioma, new SelectList(ViewBag.Idioma, "Value", "Text"), new { @class = "form-control-dropdown" })
+                            @Html.ValidationMessageFor(x => x.IdIdioma, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Label("Imagen", new { @class = "col-sm-12 control-label labelText m-top-5" })
+                        <div class="col-md-12">
+                            <input type="file" id="Imagen" form-control" name="Imagen" onchange="jQuery(this).next('input').val(this.value);" accept=".xlsx,.xls,image/*,.doc, .docx.,.ppt, .pptx,.txt,.pdf" />
+                            @Html.TextBoxFor(x => x.PathImg, new { @class = "form-control", @readonly = "true" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Label("Ícono", new { @class = "col-sm-12 control-label labelText m-top-5" })
+                        <div class="col-md-12">
+                            <input type="file" id="Icono" form-control" name="Icono" onchange="jQuery(this).next('input').val(this.value);" accept=".xlsx,.xls,image/*,.doc, .docx.,.ppt, .pptx,.txt,.pdf" />
+                            @Html.TextBoxFor(x => x.IconPath, new { @class = "form-control", @readonly = "true" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Label("Publicar", new { @class = "col-sm-12 control-label labelText m-top-5" })
+                        
+                            <div class="col-lg-2 col-md-2 col-xs-2">
+                                @Html.CheckBoxFor(x => x.Publicar, new { @class = "form-control pull-left", @id = "valor" })
+                                @Html.ValidationMessageFor(x => x.Publicar, "", new { @class = "text-danger" })
+                            </div>
+                       
+                    </div>
+                </div>
+
+
+                    <div class="col-sm-12">
+                        <div class="pull-right">
+                            <button style="margin-bottom:2%;margin-top:10%;background-color:#2e2929;height:100%;width:auto" type="submit" class="btn btn-raised btn-inverse">Guardar<span class="md-ripple"></span></button>
+                        </div>
+
+
+                    </div>
+
+            </fieldset>
+        </div>
+    }
+
+</section>
+
+
+<script>
+
+
+
+    $('#crudModal').on('shown.bs.modal', function () {
+        $('#btCloseModal').trigger('focus')
+    })
+
+</script>

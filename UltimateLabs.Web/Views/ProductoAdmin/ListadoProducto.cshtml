@@ -1,0 +1,304 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<UltimateLabs.Web.Models.ProductoAdminViewModel>
+
+@{
+    ViewBag.Title = "ListadoProducto";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Roboto" rel="stylesheet">
+    @Styles.Render("~/Content/CSS/Styles.css")
+</head>
+
+
+
+@*<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>*@
+
+<section>
+    @using (Html.BeginForm("ListadoProducto", "ProductoAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        
+        <div class="contenedor col-sm-10" style="margin-left:2%;margin-top:5%;background-color:white">
+            <fieldset>
+                <legend style="font-family:'Roboto',sans-serif;font-size:xx-large">
+                    Listado
+                </legend>
+
+                <div class="panel" id="panelDemo9">
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="BuscarProducto" onkeyup="javascript:Filtrar()" placeholder="Buscar" />
+
+                    </div>
+
+                    <button style="background-color:#02779d;margin-left:20%" class="btn btn-inverse ripple " onclick="location.href='@Url.Action("indexcrear", "productoadmin")'" type="button" id="btnEliminar"
+                            data-toggle="tooltip" data-placement="top" title="Agregar Producto">
+                        Agregar
+                    </button>
+                    <div class="form-group">
+
+                        <table id="tblContact" class="table-datatable table table-striped table-hover mv-lg dataTable" data-page-size="6" data-first-text="FIRST" data-next-text="NEXT" data-previous-text="PREVIOUS" data-last-text="LAST">
+                            <thead>
+                                @*<tr>
+                                    <th style="color:#02779d;font-family:'Roboto',sans-serif">Idioma:Español</th>
+                                    <th style="color:#2e2929;font-family:'Roboto',sans-serif">Idioma:Ingles</th>
+                                </tr>*@
+                                <tr style="background-color:#02779d">
+                                    <th style="color:white;font-family:'Roboto',sans-serif">Nombre Producto</th>
+                                    @*<th style="color:white;font-family:'Roboto',sans-serif">Nombre Producto</th>*@
+                                    <th style="color:white;font-family:'Roboto',sans-serif">Acción</th>
+                                </tr>
+
+                                <tr>
+                                    <th width="auto">
+                                    </th>
+                                    @*<th>
+
+                                    </th>*@
+
+                                    <th width="auto">
+
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            @if (Model != null)
+                            {
+                                <tbody>
+                                    @foreach (var data in Model)
+                                    {
+                                        <tr class="target">
+                                            <td style="font-family:'Roboto',sans-serif;height:60%">
+                                                @Html.DisplayFor(modelItem => data.NombreProducto)
+                                            </td>
+                                            @*<td style="font-family:'Roboto',sans-serif;height:60%">
+                                                @Html.DisplayFor(modelItem => data.NombreProductoENG)
+                                            </td>*@
+                                            <td>
+
+                                                <button style="background-color:#2e2929" class="btn btn-inverse ripple " onclick="Inactivar(@data.CodigoMaestro)" type="button" id="btnEliminar"
+                                                        data-toggle="tooltip" data-placement="top" title="Eliminar Producto">
+                                                    <span>
+                                                        <img src="/Content/Template/Imagenes/Icons/delete-white.png">
+                                                    </span>
+                                                </button>
+                                                <button style="background-color:#02779d" class="btn ripple" onclick="location.href='@Url.Action("editarproducto", "productoadmin", new { id = data.CodigoMaestro })'" type="button" id="btnEditar"
+                                                        data-toggle="tooltip" data-placement="top" title="Editar Producto">
+                                                    <span>
+                                                        <img src="/Content/Template/Imagenes/Icons/lead-pencil-white.png">
+                                                    </span>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                    }
+                                </tbody>
+                            }
+
+
+                        </table>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                @if (Model != null)
+                                {
+                                    @Html.PagedListPager(Model,
+                                              page => Url.Action("Index", new { page }));
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </fieldset>
+        </div>
+
+    }
+
+</section>
+
+<script language="javascript" type="text/javascript">
+    function Inactivar(_cod) {
+
+        swal({
+
+            title: "Eliminar Producto",
+            text: "¿Está seguro que desea eliminar este producto?",
+            type: "warning",
+            cancelButtonText: "No",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            confirmButtonText: "Si",
+            showLoaderOnConfirm: true
+        },
+            function () {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("Inactivar")',
+                    contentType: "application/json",
+                    data: { id: _cod},
+                    complete: function (data) {
+                        if (data.readyState === 4) {
+
+                            swal({
+                                title: "Producto eliminado correctamente",
+                                type: "success",
+                                closeOnConfirm: false,
+                                showLoaderOnConfirm: true
+                            },
+                                function () {
+                                    location.reload();
+                                }
+                            );
+                        }
+                    },
+
+
+
+                });
+            }
+        );
+
+    }
+</script>
+
+
+<script>
+    function Prueba() {
+        $.ajax({
+            url: Ordenar(),
+            success: function () {
+                Filtrar();
+            }
+        })
+    }
+
+    function Filtrar() {
+        var input = document.getElementById("BuscarProducto");
+        var filter = input.value.toLowerCase();
+        var nodes = document.getElementsByClassName("target");
+
+        for (i = 0; i < nodes.length; i++) {
+            if (nodes[i].innerText.toLowerCase().includes(filter)) {
+                nodes[i].style.display = "";
+            } else {
+                nodes[i].style.display = "none";
+            }
+        }
+    }
+
+    function Ordenar() {
+        pageSize = 9;
+
+        $("#pagin").find('li').remove();
+        var pageCount = Math.ceil($(".line-content").size() / pageSize);
+
+        for (var i = 0; i < pageCount; i++) {
+            if (i == 0)
+                $("#pagin").append('<li><a class="current" href="#">' + (i + 1) + '</a></li>');
+            else
+                $("#pagin").append('<li><a href="#">' + (i + 1) + '</a></li>');
+        }
+
+
+        showPage(1);
+
+        $("#pagin li a").click(function () {
+            $("#pagin li a").removeClass("current");
+            $(this).addClass("current");
+            showPage(parseInt($(this).text()))
+        });
+
+
+
+        showPage = function (page) {
+            $(".line-content").hide();
+
+            $(".line-content").each(function (n) {
+                if (n >= pageSize * (page - 1) && n < pageSize * page)
+                    $(this).show();
+            });
+
+        }
+    }
+
+    function OrdenarFiltro() {
+        pageSize = 9;
+
+        $("#pagin").find('li').remove();
+        var pageCount = Math.ceil($(".ListaActivo").size() / pageSize);
+
+        for (var i = 0; i < pageCount; i++) {
+            if (i == 0)
+                $("#pagin").append('<li><a class="current" href="#">' + (i + 1) + '</a></li>');
+            else
+                $("#pagin").append('<li><a href="#">' + (i + 1) + '</a></li>');
+        }
+
+
+        showPage(1);
+
+        $("#pagin li a").click(function () {
+            $("#pagin li a").removeClass("current");
+            $(this).addClass("current");
+            showPage(parseInt($(this).text()))
+        });
+
+
+
+        showPage = function (page) {
+            $(".ListaActivo").hide();
+
+            $(".ListaActivo").each(function (n) {
+                if (n >= pageSize * (page - 1) && n < pageSize * page)
+                    $(this).show();
+            });
+
+        }
+    }
+
+</script>
+
+<script>
+
+    pageSize = 9;
+
+    $(function () {
+        var pageCount = Math.ceil($(".line-content").size() / pageSize);
+
+        for (var i = 0; i < pageCount; i++) {
+            if (i == 0)
+                $("#pagin").append('<li><a class="current" href="#">' + (i + 1) + '</a></li>');
+            else
+                $("#pagin").append('<li><a href="#">' + (i + 1) + '</a></li>');
+        }
+
+
+        showPage(1);
+
+        $("#pagin li a").click(function () {
+            $("#pagin li a").removeClass("current");
+            $(this).addClass("current");
+            showPage(parseInt($(this).text()))
+        });
+
+    })
+
+    showPage = function (page) {
+        $(".line-content").hide();
+
+        $(".line-content").each(function (n) {
+            if (n >= pageSize * (page - 1) && n < pageSize * page)
+                $(this).show();
+        });
+    }
+</script>

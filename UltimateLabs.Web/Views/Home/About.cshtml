@@ -1,0 +1,362 @@
+﻿@model IEnumerable<UltimateLabs.Web.Models.ConfiguracionesViewModel>
+
+
+
+
+
+<div class="content-area bg-white">
+    <div class="container bg-white">
+
+
+       
+
+
+        <div class="row" style="margin-top:35px">
+
+            @if (Model != null)
+            {
+                int contador = 1;
+                foreach (var item in Model)
+                {
+                    if (item.CodigoConfiguracion == "V")
+                    {
+
+                        <div class="col-md-12 text-center section-head">
+                            <h2 class="h2"><b>@item.NombreConfiguracion</b></h2>
+                            <div class="dez-separator bg-primary"></div>
+                            <div class="clear"></div>
+                            <p style="font-size:15px">@item.Valor</p>
+                        </div>
+
+
+                    }
+
+                    contador += 1;
+
+                }
+            }
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 mt-20">
+                <div class="carousel slide" id="carousel">
+
+                    <div class="carousel-inner">
+
+                        @if (Model != null)
+                        {
+                            int cuenta = 1;
+                            foreach (var item in Model)
+                            {
+                                if (cuenta == 1)
+                                {
+                                    if (item.CodigoConfiguracion == "VIS")
+                                    {
+                                        <div class="item active">
+                                            <div class="cont12">
+                                                <img src="@item.PathImg" alt="Notebook" style="width:100%;">
+                                                <div class="content">
+
+
+                                                    <div class="col-sm-12 col-xs-12">
+
+
+
+                                                        <div>
+                                                            <h4 class="text-left" style="color:white"><b>@item.NombreConfiguracion</b></h4>
+                                                            <p style="text-align:justify">@item.Valor</p>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+                                if (item.CodigoConfiguracion == "M")
+                                {
+                                    <div class="item">
+                                        <div class="cont12">
+                                            <img src="@item.PathImg" alt="Notebook" style="width:100%;">
+                                            <div class="content">
+
+
+                                                <div class="col-sm-12 col-xs-12">
+
+
+
+                                                    <div>
+                                                        <h4 class="text-left" style="color:white"><b>@item.NombreConfiguracion</b></h4>
+                                                        <p style="text-align:justify">@item.Valor</p>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                cuenta += 1;
+                            }
+                        }
+
+
+
+
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" data-slide="prev" href="#carousel">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="right carousel-control" data-slide="next" href="#carousel">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" style="margin-top:25px;">
+            <div class="col-sm-12 col-xs-12">
+                <div class="col-md-12 text-center section-head">
+                    @if (TempData["Valor"] != null)
+                    {
+                        <h2 class="h2"><b>@TempData["Valor"]</b></h2>
+                    }
+                    <div class="dez-separator bg-primary"></div>
+
+                </div>
+
+
+                @if (Model != null)
+                {
+
+                    foreach (var item in Model)
+                    {
+
+                        if (item.CodigoConfiguracion == "V1" || item.CodigoConfiguracion == "V2" || item.CodigoConfiguracion == "V3")
+                        {
+
+                            <div class="col-sm-4" data-anijs="if: scroll, on: window, do: flipInY animated, before: scrollReveal">
+                                <div style="height:370px;">
+                                    <div class="text-center">
+
+                                        @*<div class="dez-media dez-img-overlay2 dez-img-effect zoom">*@
+                                            <img src='@item.PathImg' />
+                                            @*<div class="dez-info-has p-a20">
+                                                <div class="dez-info-has-text">We have the expertise to create just the right web presence for you.</div>
+
+                                            </div>
+                                        </div>*@
+
+
+                                       
+                                    </div>
+
+                                    <br />
+
+
+
+                                    <div class="m-b20">
+                                        <h5 class="text-uppercase text-center"><b>  @item.NombreConfiguracion</b></h5>
+                                        <p>@item.Valor</p>
+
+                                    </div>
+
+                                </div>
+                                <div class="dez-divider bg-gray-dark text-gray-dark icon-right"><i class="fa fa-circle"></i></div>
+                            </div>
+
+                        }
+
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+        </div>
+
+
+        @*<div class="content-area">
+
+
+                <!-- content start -->
+                <div class="container">
+
+                    <!-- Dividers with height -->
+                    <div class="p-a30 bg-white m-b40">
+                        <div class="section-content">
+
+                            @if (Model != null)
+                            {
+                                int contador = 1;
+                                foreach (var item in Model)
+                                {
+                                    if (item.CodigoConfiguracion == "V")
+                                    {
+
+                                        <div class="col-md-12 text-center section-head">
+                                            <h2 class="h2"><b>@item.NombreConfiguracion</b></h2>
+                                            <div class="dez-separator bg-primary"></div>
+                                            <div class="clear"></div>
+                                            <p style="font-size:15px">@item.Valor</p>
+                                        </div>
+
+
+                                    }
+
+                                    contador += 1;
+
+                                }
+                            }
+
+
+
+                            <div class="carousel slide" id="carousel">
+
+                                <div class="carousel-inner">
+
+                                    @if (Model != null)
+                                    {
+                                        int cuenta = 1;
+                                        foreach (var item in Model)
+                                        {
+                                            if (cuenta == 1)
+                                            {
+                                                if (item.CodigoConfiguracion == "VIS")
+                                                {
+                                                    <div class="item active">
+                                                        <div class="cont12">
+                                                            <img src="~/Content/Template/Imagenes/Upload/background2.jpg" alt="Notebook" style="width:100%;">
+                                                            <div class="content">
+
+
+                                                                <div class="col-sm-12 col-xs-12">
+
+
+
+                                                                    <div>
+                                                                        <h4 class="text-left" style="color:white"><b>@item.NombreConfiguracion</b></h4>
+                                                                        <p style="text-align:justify">@item.Valor</p>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+
+                                            if (item.CodigoConfiguracion == "M")
+                                            {
+                                                <div class="item">
+                                                    <div class="cont12">
+                                                        <img src="~/Content/Template/Imagenes/Upload/background2.jpg" alt="Notebook" style="width:100%;">
+                                                        <div class="content">
+
+
+                                                            <div class="col-sm-12 col-xs-12">
+
+
+
+                                                                <div>
+                                                                    <h4 class="text-left" style="color:white"><b>@item.NombreConfiguracion</b></h4>
+                                                                    <p style="text-align:justify">@item.Valor</p>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            cuenta += 1;
+                                        }
+                                    }
+
+
+
+
+
+                                </div>
+
+                                <!-- Controls -->
+                                <a class="left carousel-control" data-slide="prev" href="#carousel">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                                <a class="right carousel-control" data-slide="next" href="#carousel">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+
+
+
+                            <div class="row" style="margin-top:25px">
+                                <div class="col-sm-12 col-xs-12">
+                                    <div class="col-md-12 text-center section-head">
+                                        @if (TempData["Valor"] != null)
+                                        {
+                                            <h2 class="h2"><b>@TempData["Valor"]</b></h2>
+                                        }
+                                        <div class="dez-separator bg-primary"></div>
+
+                                    </div>
+
+
+                                    @if (Model != null)
+                                    {
+
+                                        foreach (var item in Model)
+                                        {
+
+                                            if (item.CodigoConfiguracion == "V1" || item.CodigoConfiguracion == "V2" || item.CodigoConfiguracion == "V3")
+                                            {
+
+                                                <div class="col-sm-4">
+                                                    <div style="height:370px;">
+                                                        <div class="text-center">
+                                                            <img src='@item.PathImg' />
+                                                        </div>
+
+                                                        <br />
+
+
+
+                                                        <div class="m-b20">
+                                                            <h5 class="text-uppercase text-center"><b>  @item.NombreConfiguracion</b></h5>
+                                                            <p>@item.Valor</p>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="dez-divider bg-gray-dark text-gray-dark icon-right"><i class="fa fa-circle"></i></div>
+                                                </div>
+
+                                            }
+
+                                        }
+                                    }
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>*@
+
+

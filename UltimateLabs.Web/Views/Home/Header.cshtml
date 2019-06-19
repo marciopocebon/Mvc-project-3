@@ -1,0 +1,89 @@
+﻿@model IEnumerable<UltimateLabs.Web.Models.EtiquetasViewModel>
+<section>
+    <header class="site-header header header-style-1 dark">
+
+        <div class="sticky-header header-curve main-bar-wraper">
+            <div class="main-bar bg-primary clearfix">
+
+                @*style="position:fixed"*@
+                <div class="container clearfix">
+                    <!-- website logo -->
+                    <div class="logo-header mostion"><a href="@Url.Action("Index","Home")"><img src="~/Content/Template/Imagenes/LogoUltimate.jpg" width="193" height="89" alt="" data-anijs="if: scroll, on: window, do: rollIn animated, before: scrollReveal; if: load, on: window, do: rubberBand animated; if: mouseover, do: rubberBand animated"></a></div>
+                    <!-- nav toggle button -->
+
+                    <button data-target=".header-nav" data-toggle="collapse" type="button" class="navbar-toggle collapsed"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <!-- extra nav -->
+                    <!-- main nav -->
+
+
+
+                    <div class="header-nav navbar-collapse collapse">
+                        @if (Model != null)
+                        {
+                            Html.RenderAction("Languajes");
+                        }
+                        <ul class=" nav navbar-nav">
+
+                            @if (Model != null)
+                            {
+                                int contador = 1;
+                                foreach (var item in Model)
+                                {
+                                    <li>
+
+
+                                        @if (contador == 1)
+                                        {
+                                            <a href="@Url.Action("Index","Home")"> @item.Valor</a>
+                                        }
+
+
+
+                                        @if (contador == 2)
+                                        {
+                                            <a href="@Url.Action("Index","Products")"> @item.Valor</a>
+                                            Html.RenderAction("Categories");
+
+                                        }
+
+                                        @if (contador == 3)
+                                        {
+                                            <a href="/Home/Index#about"> @item.Valor</a>
+
+                                        }
+
+                                        @if (contador == 4)
+                                        {
+                                            <a href="#"> @item.Valor</a>
+
+                                        }
+
+                                        @if (contador == 5)
+                                        {
+                                            <a href="/Home/Index#contact"> @item.Valor</a>
+
+                                        }
+
+
+
+                                    </li>
+                                    contador += 1;
+                                }
+                            }
+
+
+                        </ul>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <!-- main header END -->
+    </header>
+</section>
+

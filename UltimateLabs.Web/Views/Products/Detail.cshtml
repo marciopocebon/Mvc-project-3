@@ -1,0 +1,191 @@
+﻿@model UltimateLabs.Web.Models.ProductoViewModel
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+  
+  
+
+
+    <div class="container">
+        <br />
+        <div class="row">
+
+         
+
+            @*<div class="col-sm-3">
+                <div class="breadcrumb-row">
+                    <div class="container">
+                        <ul class="list-inline">
+                            <li><a href="#">Home</a></li>
+                            <li>Product Details</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>*@
+            <div class="col-sm-12 col-xs-12">
+
+                <div>
+                    @if (Model != null)
+                    {
+                        @*<a href='@Url.Action("List","Products", new {CodCategoria = Model.IdCategoria })'> <img src="~/Content/Template/Imagenes/Icons/back.svg" alt="MenuItem" style="height:48px;width:48px"></a>*@
+
+                        <div class="col-sm-12 text-center" style="padding-top:0px">
+                            <label class="heading text-center" style="font-size:40px">@Model.NombreProducto</label>
+                            <hr class="hr-1">
+                        </div>
+
+
+                    }
+
+
+
+                </div>
+
+
+
+
+                @if (Model != null)
+                {
+                    <div class="col-sm-5 col-xs-12">
+
+                        <div class="text-center">
+                            <img src="@Model.PathImg">
+                        </div>
+
+                        @*<div id="thumbnail-preview-indicators" class="carousel slide" data-ride="carousel">
+
+
+                        <ol class="carousel-indicators">
+
+                            <li data-target="#thumbnail-preview-indicators" data-slide-to="0" class="active">
+                                <div class="thumbnail">
+                                    <img class="img-responsive" src="@Model.PathImg">
+                                </div>
+                            </li>
+                            <li data-target="#thumbnail-preview-indicators" data-slide-to="1">
+                                <div class="thumbnail">
+                                    <img class="img-responsive" src="@Model.PathImg">
+                                </div>
+                            </li>
+                            <li data-target="#thumbnail-preview-indicators" data-slide-to="2">
+                                <div class="thumbnail">
+                                    <img class="img-responsive" src="@Model.PathImg">
+                                </div>
+                            </li>
+
+                        </ol>
+
+
+
+
+                        <div class="carousel-inner">
+                            <div class="item slides active">
+                                <div class="slide-1" style="background-image:url(@Model.PathImg)"></div>
+                                <div class="container">
+
+                                </div>
+                            </div>
+                            <div class="item slides">
+                                <div class="slide-2" style="background-image:url(@Model.PathImg)"></div>
+                                <div class="container">
+
+                                </div>
+                            </div>
+                            <div class="item slides">
+                                <div class="slide-3" style="background-image:url(@Model.PathImg)"></div>
+                                <div class="container">
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>*@
+
+
+
+
+                    </div>
+
+                }
+
+                <div class="col-sm-7 col-xs-12">
+                    @if (Model != null)
+                    {
+
+                        <h5 class="dez-tilte m-a0"><span class="dez-tilte-inner skew-title bg-primary p-lr15 p-tb10">Analgesico</span></h5>
+                        <br />
+                        <h4><b>@Model.NombreComun</b></h4>
+
+                        <div><p style="text-align:justify">@Model.DescripcionLarga</p></div>
+                        <div class="text-justify">
+                            @if (ViewBag.Detalle != null)
+                            {
+                                int contador = 0;
+                                foreach (var item in @ViewBag.Detalle)
+                                {
+                                    if (contador == 0)
+                                    {
+                                        <h4> <b> @Html.Raw(item)</b></h4>
+
+                                    }
+                                    else
+                                    {
+
+                                        <img src="~/Content/Template/Imagenes/Icons/Icon1.svg" alt="MenuItem" style="height:15px;width:15px">
+                                        @Html.Raw(item)
+                                        <br />
+                                    }
+                                    contador += 1;
+
+                                }
+                            }
+
+
+
+                        </div>
+                        <div>
+                            <br />
+                            @if (ViewBag.DetalleDosis != null)
+                            {
+                                int contador = 0;
+                                foreach (var item in @ViewBag.DetalleDosis)
+                                {
+
+                                    if (contador == 0)
+                                    {
+                                        <h4>  <b>@Html.Raw(item)</b></h4>
+
+                                    }
+
+                                    else
+                                    {
+                                        <img src="~/Content/Template/Imagenes/Icons/Icon1.svg" alt="MenuItem" style="height:15px;width:15px"> @Html.Raw(item)
+                                        <br />
+                                    }
+                                    contador += 1;
+                                }
+                            }
+
+
+
+                        </div>
+                    }
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</section>
+

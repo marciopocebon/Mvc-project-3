@@ -1,0 +1,88 @@
+﻿@model UltimateLabs.Web.Models.EtiquetasAdminViewModel
+
+@Scripts.Render("~/bundles/jqueryval")
+@Styles.Render("~/ThemeAdmin/css")
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Roboto" rel="stylesheet">
+    @Styles.Render("~/Content/CSS/Styles.css")
+</head>
+
+<section>
+    @using (Html.BeginForm("CrearEtiqueta", "EtiquetaAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        
+        @Html.AntiForgeryToken()
+
+        <div class="col-sm-5 contenedor" style="margin-left:2%;margin-top:5%;background-color:white">
+            <fieldset>
+                <legend style="font-family:'Roboto',sans-serif">
+                    Agregar
+                </legend>
+                <div class="col-sm-12">
+                    @Html.Label("Código", new { @class = "col-sm-12 control-label labelText" })
+                    <div class="col-sm-12">
+                        @Html.TextAreaFor(x => x.CodEtiqueta, new { @class = "form-control m-bottom-5", @id = "valor", @required = "true" })
+                        @Html.ValidationMessageFor(x => x.CodEtiqueta, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    @Html.Label("Descripción", new { @class = "col-sm-12 control-label labelText" })
+                    <div class="col-sm-12">
+                        @Html.TextAreaFor(x => x.DescripcionEtiqueta, new { @class = "form-control m-bottom-5", @id = "valor" })
+                        @Html.ValidationMessageFor(x => x.DescripcionEtiqueta, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    @Html.Label("Valor", new { @class = "col-sm-12 control-label labelText" })
+                    <div class="col-sm-12">
+                        @Html.TextAreaFor(x => x.Valor, new { @class = "form-control m-bottom-5", @id = "valor", @rows = "7" })
+                        @Html.ValidationMessageFor(x => x.Valor, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    @Html.Label("Idioma", new { @class = "col-sm-12 control-label labelText" })
+                    <div class="col-sm-12">
+                        @Html.DropDownListFor(x => x.IdIdioma, new SelectList(ViewBag.Idioma, "Value", "Text"), new { @class = "form-control-dropdown m-bottom-5" })
+                        @Html.ValidationMessageFor(x => x.IdIdioma, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    @Html.Label("Publicar", new { @class = "col-sm-12 control-label labelText" })
+                    <div class="col-sm-12">
+                        @Html.CheckBoxFor(x => x.Publicar, new { @class = "form-control2 m-bottom-5", @id = "valor" })
+                        @Html.ValidationMessageFor(x => x.Publicar, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="pull-right">
+                        <button style="margin-bottom:2%;margin-top:10%;background-color:#2e2929;height:100%;width:auto" type="submit" class="btn btn-raised btn-inverse">Guardar<span class="md-ripple"></span></button>
+                    </div>
+
+
+                </div>
+
+            </fieldset>
+        </div>
+    }
+
+</section>
+
+
+<script>
+
+
+
+    $('#crudModal').on('shown.bs.modal', function () {
+        $('#btCloseModal').trigger('focus')
+    })
+
+</script>
+
+

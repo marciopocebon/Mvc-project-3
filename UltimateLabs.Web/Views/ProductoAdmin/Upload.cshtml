@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+
+
+
+    <div class="col-lg-10 col-xs-12 bg-white">
+        <div class="contenedor col-sm-12"style="margin-left:1%">
+
+            <div action="~/ProductoAdmin/Upload" method="post" enctype="multipart/form-data" class="col-sm-12 dropzone" id="dropzoneForm" style="width: 100%; background: none; border: none;">
+                <div class="fallback">
+                    <input name="file" type="file" multiple />
+
+                </div>
+                <div class="text-right">
+
+                </div>
+            </div>
+
+        </div>
+    </div>

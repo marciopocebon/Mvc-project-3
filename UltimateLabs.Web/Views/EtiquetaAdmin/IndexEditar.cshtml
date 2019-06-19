@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutTry.cshtml";
+}
+
+
+<body class="fontbody">
+
+
+    <section style="background-color:#">
+        <h6 style="color:#02779d;margin-left:3%">Configuraciones > Etiquetas</h6>
+        <div class="row">
+            <h3 style="color:#02779d;margin-left:3%" class="text-center">Etiquetas</h3>
+            <div style="margin-top:-5%;margin-left:2%">
+
+                @{ Html.RenderAction("EditarEtiqueta");}
+
+                @{
+                    Html.RenderAction("ListadoEtiqueta");
+                }
+            </div>
+        </div>
+
+    </section>
+</body>

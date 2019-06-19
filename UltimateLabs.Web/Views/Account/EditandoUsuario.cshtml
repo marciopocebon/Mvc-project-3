@@ -1,0 +1,64 @@
+﻿@model UltimateLabs.Web.Models.LoginViewModel
+@Scripts.Render("~/bundles/jqueryval")
+@Styles.Render("~/ThemeAdmin/css")
+@{
+    ViewBag.Title = "EditandoUsuario";
+    Layout = "~/Views/Shared/_LayoutTry.cshtml";
+}
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Roboto" rel="stylesheet">
+    @Styles.Render("~/Content/CSS/Styles.css")
+    @Styles.Render("~/Content/basic.css")
+    @Styles.Render("~/Content/dropzone.css")
+    @Styles.Render("~/Content/Register.css")
+    <script src="~/Scripts/jquery.filedrop.js"></script>
+    <link rel="stylesheet" href="~/Content/basic.css" />
+    <link rel="stylesheet" href="~/Content/dropzone.css" />
+    <script src="~/Scripts/dropzone.js"></script>
+</head>
+
+
+@using (Html.BeginForm("EditandoUsuario", "Account", FormMethod.Post, new { @id = "EditandoUsuario", enctype = "multipart/form-data" }))
+{
+    
+    <div class="col-sm-12" style=" height:1mm; width:1mm; padding:1mm 1mm 1mm 1mm">
+        @Html.TextBoxFor(x => x.Id, new { style = "visibility:hidden;  height:1mm; width:1mm; padding:1mm 1mm 1mm 1mm", @class = "form-control", @id = "Id" })
+    </div>
+
+    @Html.AntiForgeryToken()
+    <h6 style="color:#02779d;margin-left:3%;font-family:'Roboto',sans-serif">Seguridad > Editar Usuarios</h6>
+    <h3 style="color:#02779d;font-family:'Roboto',sans-serif" class="text-center">Editar Usuarios</h3>
+
+    <div class="col-sm-12 contenedor">
+        <legend>
+            Editar
+        </legend>
+
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Username, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Editar" />
+            </div>
+        </div>
+
+    </div>
+}

@@ -1,0 +1,438 @@
+﻿@model UltimateLabs.Web.Models.ProductoAdminViewModel
+
+@Scripts.Render("~/bundles/jqueryval")
+@Styles.Render("~/ThemeAdmin/css")
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutTry.cshtml";
+}
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Roboto" rel="stylesheet">
+    @Styles.Render("~/Content/CSS/Styles.css")
+    @Styles.Render("~/Content/basic.css")
+    @Styles.Render("~/Content/dropzone.css")
+    <script src="~/Scripts/jquery.filedrop.js"></script>
+    <link rel="stylesheet" href="~/Content/basic.css" />
+    <link rel="stylesheet" href="~/Content/dropzone.css" />
+    <script src="~/Scripts/dropzone.js"></script>
+</head>
+
+<section>
+    @using (Html.BeginForm("EditarProducto", "ProductoAdmin", FormMethod.Post, new { @id = "EditarProducto", enctype = "multipart/form-data" }))
+    {
+        <h6 style="color:#02779d;margin-left:7%">Productos > Editar</h6>
+        <h3 style="color:#02779d;margin-left:7%">Editar</h3>
+        <div class="row">
+            @Html.AntiForgeryToken()
+            @Html.TextBoxFor(x => x.IdProducto, new { @class = "", @readonly = "true", @style = "visibility: hidden;" })
+            @Html.TextBoxFor(x => x.CodigoMaestro, new { @class = "", @readonly = "true", @style = "visibility: hidden;" })
+            @Html.TextBoxFor(x => x.IdIdioma, new { @class = "", @readonly = "true", @style = "visibility: hidden;" })
+            @Html.TextBoxFor(x => x.IdProductoENG, new { @class = "", @readonly = "true", @style = "visibility: hidden;" })
+            @Html.TextBoxFor(x => x.CodigoMaestroENG, new { @class = "", @readonly = "true", @style = "visibility: hidden;" })
+            @Html.TextBoxFor(x => x.IdIdiomaENG, new { @class = "", @readonly = "true", @style = "visibility: hidden;" })
+
+            <div class="contenedor col-lg-5 col-xs-12">
+
+                <div class=" col-xs-12" style="margin-left:2%;margin-top:5%;height:50px">
+                    <fieldset>
+                        <legend class="pull-left" style="font-size:x-large;color:">
+                            Idioma:Español
+                        </legend>
+                    </fieldset>
+                </div>
+
+                <div class="col-xs-12  " style="margin-left:2%;margin-top:5%">
+                    <br />
+                    <fieldset>
+                        <legend style="font-family:'Roboto',sans-serif;font-size:large">
+                            Información General
+                        </legend>
+
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Nombre Producto:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.TextBoxFor(x => x.NombreProducto, new { @class = "form-textbox", @id = "valor" })
+                            @Html.ValidationMessageFor(x => x.NombreProducto, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Nombre Común:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.TextBoxFor(x => x.NombreComun, new { @class = "form-textbox", @id = "valor" })
+                            @Html.ValidationMessageFor(x => x.NombreComun, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Descripción Corta:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.TextAreaFor(x => x.DescripcionCortaProducto, new { @class = "form-textbox", @id = "valor", @rows = "5" })
+                            @Html.ValidationMessageFor(x => x.DescripcionCortaProducto, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Descripción Larga:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.TextAreaFor(x => x.DescripcionLargaProducto, new { @class = "form-textbox", @id = "valor", @rows = "5" })
+                            @Html.ValidationMessageFor(x => x.DescripcionLargaProducto, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Categoría:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.DropDownListFor(x => x.IdCategoria, new SelectList(ViewBag.Categoria, "Value", "Text"), new { @class = "form-textbox" })
+                            @Html.ValidationMessageFor(x => x.IdCategoria, "", new { @class = "text-danger" })
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="col-xs-12 " style="margin-left:2%;margin-top:5%">
+                    <br />
+                    <fieldset>
+                        <legend style="font-family:'Roboto',sans-serif;font-size:large">
+                            Datos Médicos
+                        </legend>
+
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Indicaciones:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.TextAreaFor(x => x.Indicaciones, new { @class = "form-textbox", @id = "valor", @rows = "5" })
+                            @Html.ValidationMessageFor(x => x.Indicaciones, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Dosis:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.TextAreaFor(x => x.Dosis, new { @class = "form-textbox", @id = "valor", @rows = "5" })
+                            @Html.ValidationMessageFor(x => x.Dosis, "", new { @class = "text-danger" })
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="col-xs-12 " style="margin-left:2%;margin-top:5%">
+                    <br />
+                    <fieldset>
+                        <legend style="font-family:'Roboto',sans-serif;font-size:large">
+                            Configuración
+                        </legend>
+
+                        <div class="col-sm-6">
+                            @Html.Label("Publicar", new { @class = "col-sm-12 control-label", @style = "text-align:left;font-family:'Roboto',sans-serif;font-size:18px" })
+                            <div class="col-sm-12">
+                                @Html.CheckBoxFor(x => x.Publicar, new { @class = "form-control", @id = "valor" })
+                                @Html.ValidationMessageFor(x => x.Publicar, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <p style="text-align:left;font-family:'Roboto',sans-serif;font-size:18px;color:#666">
+                                Idioma:Español
+                            </p>
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.Label("Imagen", new { @class = "col-sm-12 control-label", @style = "text-align:left;font-family:'Roboto',sans-serif;font-size:18px" })
+                            <div class="col-md-12">
+                                <input type="file" id="Imagen" form-control" name="Imagen" onchange="jQuery(this).next('input').val(this.value);" accept=".xlsx,.xls,image/*,.doc, .docx.,.ppt, .pptx,.txt,.pdf" />
+                                @Html.TextBoxFor(x => x.PathImg, new { @class = "form-control", @readonly = "true" })
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+
+            </div>
+
+            <div class="contenedorgris col-lg-5 col-xs-12 m-left-4percent">
+
+                <div class="col-xs-12" style="margin-left:2%;margin-top:5%;height:50px">
+                    <fieldset>
+                        <legend class="pull-left" style="font-size:x-large">
+                            Language:English
+                        </legend>
+                    </fieldset>
+                </div>
+
+                <div class="col-xs-12" style="margin-left:2%;margin-top:5%">
+                    <br />
+                    <fieldset>
+                        <legend style="font-family:'Roboto',sans-serif;font-size:large">
+                            General Information
+                        </legend>
+
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Product Name:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.TextBoxFor(x => x.NombreProductoENG, new { @class = "form-textbox", @id = "txtCourseID" })
+                            @Html.ValidationMessageFor(x => x.NombreProductoENG, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Common Name:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.TextBoxFor(x => x.NombreComunENG, new { @class = "form-textbox", @id = "txtCourseID" })
+                            @Html.ValidationMessageFor(x => x.NombreComunENG, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Short Description:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.TextAreaFor(x => x.DescripcionCortaProductoENG, new { @class = "form-textbox", @id = "txtCourseID", @rows = "5" })
+                            @Html.ValidationMessageFor(x => x.DescripcionCortaProductoENG, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Large Description:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.TextAreaFor(x => x.DescripcionLargaProductoENG, new { @class = "form-textbox", @id = "txtCourseID", @rows = "5" })
+                            @Html.ValidationMessageFor(x => x.DescripcionLargaProductoENG, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Category:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.DropDownListFor(x => x.IdCategoriaENG, new SelectList(ViewBag.CategoriaENG, "Value", "Text"), new { @class = "form-textbox" })
+                            @Html.ValidationMessageFor(x => x.IdCategoriaENG, "", new { @class = "text-danger" })
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="col-xs-12" style="margin-left:2%;margin-top:5%">
+                    <br />
+                    <fieldset>
+                        <legend style="font-family:'Roboto',sans-serif;font-size:large">
+                            Medical Data
+                        </legend>
+
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Indications:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.TextAreaFor(x => x.IndicacionesENG, new { @class = "form-textbox", @id = "txtCourseID", @rows = "5" })
+                            @Html.ValidationMessageFor(x => x.IndicacionesENG, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-xs-12" style="margin-top:1%">
+                            @Html.Label("Doses:", new { @class = "col-sm-4 control-label labelText" })
+
+                            @Html.TextAreaFor(x => x.DosisENG, new { @class = "form-textbox", @id = "txtCourseID", @rows = "5" })
+                            @Html.ValidationMessageFor(x => x.DosisENG, "", new { @class = "text-danger" })
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="col-xs-12" style="margin-left:2%;margin-top:5%">
+                    <br />
+                    <fieldset>
+                        <legend style="font-family:'Roboto',sans-serif;font-size:large">
+                            Configuration
+                        </legend>
+
+                        <div class="col-sm-6">
+                            @Html.Label("Post", new { @class = "col-sm-12 control-label", @style = "text-align:left;font-family:'Roboto',sans-serif;font-size:18px" })
+                            <div class="col-sm-12">
+                                @Html.CheckBoxFor(x => x.PublicarENG, new { @class = "form-control", @id = "txtCourseID" })
+                                @Html.ValidationMessageFor(x => x.PublicarENG, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <p style="text-align:left;font-family:'Roboto',sans-serif;font-size:18px;color:#666">
+                                Language:English
+                            </p>
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.Label("Image", new { @class = "col-sm-12 control-label", @style = "text-align:left;font-family:'Roboto',sans-serif;font-size:18px" })
+                            <div class="col-md-12">
+                                <input type="file" id="ImagenENG" form-control" name="ImagenENG" onchange="jQuery(this).next('input').val(this.value);" accept=".xlsx,.xls,image/*,.doc, .docx.,.ppt, .pptx,.txt,.pdf" />
+                                @Html.TextBoxFor(x => x.PathImgENG, new { @class = "form-control", @readonly = "true", @id = "txtCourseID" })
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-10 col-xs-12 bg-white m-top-5percent">
+                <div class="contenedor col-sm-12" style="margin-left:1%">
+
+                    <div action="~/ProductoAdmin/Upload" method="post" enctype="multipart/form-data" class="col-sm-12 dropzone" id="dropzoneForm" style="width: 100%; background: none; border: none;">
+                        <div class="fallback">
+                            <input name="file" type="file" multiple />
+
+                        </div>
+                        <div class="text-right">
+
+                        </div>
+                        <div class="dz-default dz-message"></div>
+
+                        @*<div class="dropzone-previews">  <a class="img-responsive"><img class="imgen" alt="carousel image" src="@Url.Content(Model.PathImg)"></a> </div>*@
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-12">
+                <div class="pull-right" style="margin-right:10%">
+                    <a onclick="enviar()" style="color:white;margin-bottom:2%;margin-top:10%;background-color:#02779d;height:100%;width:auto;font-family:'Roboto',sans-serif" class="btn btn-raised btn-inverse">Agregar<span class="md-ripple"></span></a>
+                    <button style="margin-bottom:2%;margin-top:10%;background-color:#2e2929;height:100%;width:auto;font-family:'Roboto',sans-serif" type="reset" value="limpiar" class="btn btn-raised btn-inverse">Limpiar<span class="md-ripple"></span></button>
+                    <input type="button" value="Limpiar Numero" id="btnlimpiarNumero" style="visibility:hidden" />
+
+                </div>
+
+
+            </div>
+            </div>
+            }
+
+    </section>
+
+
+
+@*<script type="text/javascript">
+
+    Dropzone.options.addImages = {
+        paramName: "file", // The name that will be used to transfer the file
+        addRemoveLinks: true,
+        // The setting up of the dropzone
+        init: function () {
+
+            // Add server images
+            var myDropzone = this;
+            var existingFiles = [
+                { name: "Filename 1.pdf", size: 12345678, imageUrl: 'http://img.tfd.com/wn/93/17E8B3-awful.png' },
+                { name: "Filename 2.pdf", size: 12345678, imageUrl: 'http://img.tfd.com/wn/93/17E8B3-awful.png' },
+                { name: "Filename 3.pdf", size: 12345678, imageUrl: 'http://img.tfd.com/wn/93/17E8B3-awful.png' },
+                { name: "Filename 4.pdf", size: 12345678, imageUrl: 'http://img.tfd.com/wn/93/17E8B3-awful.png' },
+                { name: "Filename 5.pdf", size: 12345678, imageUrl: 'http://img.tfd.com/wn/93/17E8B3-awful.png' }
+            ];
+
+            for (i = 0; i < existingFiles.length; i++) {
+
+                // alert(existingFiles[i].imageUrl);
+
+                myDropzone.emit("addedfile", existingFiles[i]);
+                myDropzone.files.push(existingFiles[i]);
+                myDropzone.createThumbnailFromUrl(existingFiles[i], existingFiles[i].imageUrl, function () {
+                    myDropzone.emit("complete", existingFiles[i]);
+                }, "anonymous");
+
+            }
+        },
+    };
+</script>*@
+
+<script>
+
+    function enviar() {
+        $("#CrearProducto").trigger("submit", verificar(this));
+    }
+
+    function verificar(event) {
+
+
+        mostrarModal();
+    }
+
+    function mostrarModal() {
+
+        swal({
+            title: "Ultimate Labs",
+            text: "Producto agregado exitosamente!",
+            type: "success",
+            closeOnConfirm: false,
+            confirmButtonText: "Ok",
+            showLoaderOnConfirm: true,
+        },
+            function () {
+                window.location.href = "Index";
+
+            }
+
+        );
+
+    }
+</script>
+
+
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+    $('#btnlimpiarNumero').on('click', function () {
+        $('#txtCourseID').val("").focus();
+    });
+</script>
+
+
+
+
+<script>
+    var myDropzone = new Dropzone("div#dropzoneForm", { url: "/file/post" });
+    myDropzone.createThumbnailFromUrl(file, "~/Content/Imgs/bglogin.jpg");
+   
+    // Create the mock file:
+    var mockFile = { name: "Filename", size: 12345 };
+
+    // Call the default addedfile event handler
+    myDropzone.emit("addedfile", mockFile);
+
+    // And optionally show the thumbnail of the file:
+    myDropzone.emit("thumbnail", mockFile, "/image/url");
+    // Or if the file on your server is not yet in the right
+    // size, you can let Dropzone download and resize it
+    // callback and crossOrigin are optional.
+    myDropzone.createThumbnailFromUrl(file, imageUrl, callback, crossOrigin);
+
+    // Make sure that there is no progress bar, etc...
+    myDropzone.emit("complete", mockFile);
+
+    // If you use the maxFiles option, make sure you adjust it to the
+    // correct amount:
+    var existingFileCount = 1; // The number of files already uploaded
+    myDropzone.options.maxFiles = myDropzone.options.maxFiles - existingFileCount;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var currentFile = null;
+    Dropzone.autoDiscover = false;
+    var DropzoneImg = new Dropzone("div#dropzoneForm", {
+        addRemoveLinks: true,
+        //url: "#",
+        //maxFiles: 1,
+        //dictDefaultMessage: "Agregar Imagen",
+        //dictRemoveFile: "Remover Imagen",
+        //dictCancelUpload: "Cancelar",
+        //dictFileTooBig: "La imagen es muy grande",
+        //dictMaxFilesExceeded: "Demasiados archivos",
+        //thumbnailHeight: 120,
+        //thumbnailWidth: 120,
+        //thumbnailMethod: "contain",
+        init: function () {
+            this.on("addedfile", function (file) {
+                if (currentFile) {
+                    this.removeFile(currentFile);
+                }
+                currentFile = file;
+            });
+        }
+    });
+</script>

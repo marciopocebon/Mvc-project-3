@@ -1,0 +1,147 @@
+﻿@model UltimateLabs.Web.Models.ConfiguracionesAdminViewModel
+
+@Scripts.Render("~/bundles/jqueryval")
+@Styles.Render("~/ThemeAdmin/css")
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Roboto" rel="stylesheet">
+    @Styles.Render("~/Content/CSS/Styles.css")
+</head>
+
+<section>
+    @using (Html.BeginForm("CrearGeneral", "ConfiguracionGeneralAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="col-sm-5 contenedor" style="margin-left:2%;margin-top:5%;background-color:white">
+            <fieldset>
+                <legend style="font-family:'Roboto',sans-serif">
+                    Agregar
+                </legend>
+                <div class="col-sm-12">
+                    @Html.Label("Código", new { @class = "col-sm-12 control-label labelText" })
+                    <div class="col-sm-12">
+                        @Html.TextAreaFor(x => x.CodigoConfiguracion, new { @class = "form-control m-bottom-5", @id = "valor", @required = "true" })
+                        @Html.ValidationMessageFor(x => x.CodigoConfiguracion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    @Html.Label("Nombre", new { @class = "col-sm-12 control-label labelText" })
+                    <div class="col-sm-12">
+                        @Html.TextAreaFor(x => x.NombreConfiguracion, new { @class = "form-control m-bottom-5", @id = "valor" })
+                        @Html.ValidationMessageFor(x => x.NombreConfiguracion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    @Html.Label("Descripción", new { @class = "col-sm-12 control-label labelText" })
+                    <div class="col-sm-12">
+                        @Html.TextAreaFor(x => x.DescripcionConfiguracion, new { @class = "form-control m-bottom-5", @id = "valor", @rows = "7" })
+                        @Html.ValidationMessageFor(x => x.DescripcionConfiguracion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    @Html.Label("Valor", new { @class = "col-sm-12 control-label labelText" })
+                    <div class="col-sm-12">
+                        @Html.TextAreaFor(x => x.Valor, new { @class = "form-control m-bottom-5", @id = "valor", @rows = "7" })
+                        @Html.ValidationMessageFor(x => x.Valor, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    @Html.Label("Idioma", new { @class = "col-sm-12 control-label labelText" })
+                    <div class="col-sm-12">
+                        @Html.DropDownListFor(x => x.IdIdioma, new SelectList(ViewBag.Idioma, "Value", "Text"), new { @class = "form-control-dropdown m-bottom-5" })
+                        @Html.ValidationMessageFor(x => x.IdIdioma, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    @Html.Label("Imagen", new { @class = "col-sm-12 control-label labelText" })
+                    <div class="col-md-12">
+                        <input type="file" id="Imagen" form-control" name="Imagen" onchange="jQuery(this).next('input').val(this.value);" accept=".xlsx,.xls,image/*,.doc, .docx.,.ppt, .pptx,.txt,.pdf" />
+                        @Html.TextBoxFor(x => x.PathImg, new { @class = "form-control m-bottom-5", @readonly = "true" })
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="pull-right">
+                        <button style="margin-bottom:2%;margin-top:10%;background-color:#2e2929;height:100%;width:auto" type="submit" class="btn btn-raised btn-inverse">Guardar<span class="md-ripple"></span></button>
+                    </div>
+
+
+                </div>
+
+            </fieldset>
+            </div>
+    }
+
+</section>
+
+
+<script>
+
+
+
+    $('#crudModal').on('shown.bs.modal', function () {
+        $('#btCloseModal').trigger('focus')
+    })
+
+</script>
+
+<style>
+    .cajita {
+        border: 3px solid #00adef;
+    }
+
+    .contenedor {
+        width: auto%;
+        padding: 0 4%; /*6%*/
+        border: 3px solid #02779d;
+    }
+
+    .contenedor {
+        width: auto%;
+        padding: 0 4%; /*6%*/
+        border: 3px solid #02779d;
+    }
+
+    .contenedor legend {
+        color: #666;
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+        width: 40%; /*30%*/
+        margin-right: 0px;
+        margin-bottom: 5px;
+        font-family: Penelope;
+    }
+
+    .contenedor a {
+        text-align: left;
+        font-size: 16px;
+        font-family: Penelope;
+        display: block;
+    }
+
+    .contenedor legend {
+        color: #666;
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+        width: 40%; /*30%*/
+        margin-right: 0px;
+        margin-bottom: 5px;
+        font-family: Penelope;
+    }
+
+    .contenedor a {
+        text-align: left;
+        font-size: 16px;
+        font-family: Penelope;
+        display: block;
+    }
+    }
+</style>

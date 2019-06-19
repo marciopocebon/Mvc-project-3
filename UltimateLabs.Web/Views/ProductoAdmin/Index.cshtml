@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutTry.cshtml";
+}
+@Styles.Render("~/ThemeAdmin/css")
+<style>
+    .pagination > li > a, .pagination > li > span {
+        color: white !Important;
+        background-color: #02779d !important;
+    }
+
+    .boton {
+        background-color: white;
+    }
+
+    .fontbody {
+        font-family: Seagoe UI, sans-serif;
+    }
+</style>
+<div class="col-lg-9 col-xs-12" style="background-color:;font-family:">
+    <h6 style="color:#02779d;margin-left:3%;font-family:'Roboto',sans-serif">Productos > Maestro</h6>
+
+    <div>
+        <h3 style="color:#02779d;font-family:'Roboto',sans-serif" class="text-center">Maestro</h3>
+        <div style="margin-top:-5%;margin-left:10%">
+
+            @{ Html.RenderAction("ListadoProducto");}
+
+        </div>
+    </div>
+
+</div>
+

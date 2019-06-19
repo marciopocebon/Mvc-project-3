@@ -1,0 +1,133 @@
+﻿@model IEnumerable<UltimateLabs.Web.Models.CategoriasViewModel>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<section>
+
+
+    @*<div class="bgcolor3 pt-60 pb-60" style="background-image:url(../../Content/Template/Imagenes/Upload/otrobanner.jpg);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h3 class="heading inverse font-2 thin font26">Nuestros Productos</h3>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>*@
+
+
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(../../Content/Template/Imagenes/Upload/otrobanner.jpg);">
+        <div class="container">
+            <div class="dez-bnr-inr-entry text-center">
+
+                @if (TempData["Productos"] != null) {
+                <h1 class="text-white" style="font-size:42px">@TempData["Productos"]</h1>
+                }
+            </div>
+        </div>
+    </div>
+
+
+    @if (Model != null)
+    {
+        <div class="container mt-40 mb-60">
+
+
+            <div class="row">
+
+
+
+
+                <div class="col-sm-12">
+
+
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <div class="text-center">
+                            <p style="font-size:18px">Busque un producto farmaceutico o seleccione una categoria</p>
+                        </div>
+                        <form>
+                            <input id="searchbutton" type="text" class="form-control" name="search" placeholder="Search..">
+
+                        </form>
+                        <br />
+                        <br />
+                    </div>
+                    <div class="col-sm-2"></div>
+
+
+
+                    @foreach (var item in Model)
+                    {
+
+
+
+                    <div class="col-sm-4 headline">
+                        
+                        <div class="department-box-2" style="height:140px;font-size:18px!important">
+                            <div class="head text-center">
+
+                                <a href="@Url.Action("List","Products",new {CodCategoria=item.CodCaegoria })">  <img src="@item.PathIcon" alt="" /> </a>
+
+                                @*<i class="med-icon icon-i-cardiology"></i>*@
+                                <h4 class="heading"> <a style="color:#007BFF" href="@Url.Action("List","Products",new {CodCategoria=item.CodCaegoria })">@item.NombreCategoria</a></h4>
+                            </div>
+
+                        </div>
+                        @*<div class="iconbox-2" style="height:90px;cursor: pointer;" onmouseover="this.style.backgroundColor = '#EFEFEF';" onmouseout="this.style.backgroundColor='#FFFFFF'">
+            <div class="iconbox-icon">
+
+                <img src="@item.PathIcon" />
+            </div>
+            <div class="iconbox-content">
+                <p style="text-align:center!important">
+                    <a href="@Url.Action("List","Products",new {CodCategoria=item.CodCaegoria })">@item.NombreCategoria</a>
+                </p>
+
+            </div>
+        </div>*@
+
+                    </div>
+
+                        @*<div class="col-sm-4">
+                                <div class="doctor-box-3">
+                                    <div class="doctor-img">
+                                        <a href="@Url.Action("List","Products",new {CodCategoria=item.CodCaegoria })"> <img src="@item.PathImg" class="img-responsive" alt=""> </a>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <h5><a href="@Url.Action("List","Products",new {CodCategoria=item.CodCaegoria })" style="color:#00ADEF"><b>@item.NombreCategoria</b></a></h5>
+
+                                    </div>
+                                </div>
+                            </div>*@
+
+                    }
+
+
+
+                </div>
+
+            </div>
+
+           
+
+
+
+
+
+        </div>
+    }
+
+
+
+
+</section>
+
+
+
+<script>
+    ScrollReveal().reveal('.headline');
+</script>
+

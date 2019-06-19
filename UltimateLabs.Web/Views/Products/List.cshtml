@@ -1,0 +1,64 @@
+﻿@model IEnumerable<UltimateLabs.Web.Models.ProductoViewModel>
+
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section>
+    @if (TempData["PathImg"] != null) { 
+    <div class="dez-bnr-inr overlay-black-middle"  style="height:150px;background-image:url(@TempData["PathImg"]);">
+        <div class="container">
+            <div class="dez-bnr-inr-entry text-center">
+
+                @if (TempData["Nombre"] != null) {
+                <h1 class="text-white" style="font-size:42px">@TempData["Nombre"]</h1>
+                }
+            </div>
+        </div>
+    </div>
+    }
+
+
+
+    <div class="container mt-40">
+        <br />
+        @*<div class="heading text-center">
+            <h2 class="heading">Nuestros <span class="color1">Productos</span></h2>
+
+        </div>*@
+
+
+        <div class="section-content">
+            <div class="row">
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="col-md-4 col-sm-6 m-b5">
+                            <div class="text-center">
+                                <a href='@Url.Action("Detail","Products",new {CodProducto = item.Codigo})'><img src='@item.PathImg' style="height:240px" alt=""></a>
+                                <h4 class="dez-title m-t0"><a href='@Url.Action("Detail","Products",new {CodProducto = item.Codigo})'>@item.NombreProducto</a></h4>
+                            </div>
+                            @*<div class="dez-box">
+                                    <div class="dez-media"> <a href='@Url.Action("Detail","Products",new {CodProducto = item.Codigo})'><img src='@item.PathImg' class="img-responsive" style="height:300px"  alt=""></a> </div>
+                                    <div class="dez-info p-a30 border-1">
+                                        <h4 class="dez-title m-t0"><a href='@Url.Action("Detail","Products",new {CodProducto = item.Codigo})'>@item.NombreProducto</a></h4>
+                                        <div class="dez-separator bg-primary"></div>
+                                        <p class="m-b15">@item.DescripcionCorta </p>
+
+                                    </div>
+                                </div>*@
+                        </div>
+                    }
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,599 @@
+﻿<!DOCTYPE html>
+@Styles.Render("~/Content/CSS/loader.css")
+
+<div id="preloader">
+    <div id="loader"></div>
+</div>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="~/Content/Template/Imagenes/LogoUltimate.jpg">
+
+
+    <title>Ultimate Labs</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+    @Scripts.Render("~/bundles/dropzone")
+</head>
+
+<body>
+    <header class="header-container" style="margin-left:0px !important">
+        <nav style="width:auto">
+            <ul class="">
+                <li><a id="offcanvas-toggler" href="#" class="menu-link menu-link-slide"><span><em></em></span></a></li>
+            </ul>
+            <h2 class="header-title"></h2>
+            <ul class="pull-right">
+                <li>
+                    <a id="header-search" href="#" class="ripple">
+                        <span>
+                            <img src="/Content/Template/Imagenes/Icons/lupa24.png">
+                        </span>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle has-badge ripple">
+                        <span>
+                            <img src="/Content/Template/Imagenes/Icons/user24.png">
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right md-dropdown-menu">
+                        @*<li><a href="profile.html"><em class="ion-home icon-fw"></em>Profile</a></li>
+                        <li><a href="messages.html"><em class="ion-gear-a icon-fw"></em>Messages</a></li>*@
+                        <li role="presentation" class="divider"></li>
+                        <li><a href="@Url.Action("LogOff","Account")">Logout</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a id="header-settings" href="#" class="ripple">
+                        <span>
+                            <img src="/Content/Template/Imagenes/Icons/settingsgrey24.png">
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="wrapper" style="background-color:white">
+
+        <!-- Sidebar -->
+        <nav id="sidebar" style="background-color:white;box-shadow: 3px 1px 10px #aaa;">
+            <div class="wrapper">
+                <!-- Sidebar -->
+                <nav id="sidebar" style="background-color:white;">
+
+                    <img id="img_logo" alt="Logo" src="@Url.Content("~/Content/Template/Imagenes/LogoUltimate.jpg")" style="margin-left:18%;margin-top:15%" />
+
+                    <div class="sidebar-header">
+                    </div>
+
+                    <ul class="list-unstyled">
+
+                        <li class="m-top-5percent">
+                            <a href="#productoSubmenu" onclick="AbrirProductos();" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <span>
+                                    <img src="/Content/Template/Imagenes/Icons/medicineAdmin24.png">
+                                    Productos
+                                </span>
+                            </a>
+
+                            <ul class="collapse list-unstyled" id="productoSubmenu">
+                                <li class="mifont">
+                                    <a href="@Url.Action("Index","CategoriaAdmin")" id="categoriatexto">Categoría</a>
+                                </li>
+                                <li class="mifont">
+                                    <a href="@Url.Action("Index","ProductoAdmin")" id="productotexto">Producto</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="m-top-5percent">
+                            <a href="#mantenimientoSubmenu" onclick="AbrirMantenimiento();" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <span>
+                                    <img src="/Content/Template/Imagenes/Icons/tools24.png">
+                                    Mantenimientos
+                                </span>
+                            </a>
+                            <ul class="collapse list-unstyled" id="mantenimientoSubmenu">
+                                <li>
+                                    <a href="@Url.Action("Index","IdiomaAdmin")" id="idiomatexto">Idioma</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="m-top-5percent">
+                            <a href="#configuracionSubmenu" onclick="AbrirConfiguracion();" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <span>
+                                    <img src="/Content/Template/Imagenes/Icons/settings24.png">
+                                    Configuraciones
+                                </span>
+                            </a>
+                            <ul class="collapse list-unstyled" id="configuracionSubmenu">
+                                <li class="mifont">
+                                    <a href="@Url.Action("IndexGeneral","ConfiguracionGeneralAdmin")" id="generalestexto">Generales</a>
+                                </li>
+                                <li class="mifont">
+                                    <a href="@Url.Action("Index","EtiquetaAdmin")" id="etiquetastexto">Etiquetas</a>
+                                </li>
+                                <li class="mifont">
+                                    <a href="@Url.Action("Index","CarruselAdmin")" id="carruseltexto">Carrusel Principal</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+
+                        <li class="m-top-5percent">
+                            <a href="#noticiaSubmenu" onclick="AbrirNoticia();" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <span>
+                                    <img src="/Content/Template/Imagenes/Icons/newspaper24.png">
+                                    Noticias
+                                </span>
+                            </a>
+
+                            <ul class="collapse list-unstyled" id="noticiaSubmenu">
+                                <li class="mifont">
+                                    <a href="@Url.Action("Index","NoticiaAdmin")" id="anunciostexto">Anuncios</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+
+                                <li class="m-top-5percent">
+                                    <a href="#seguridadSubmenu" onclick="AbrirSeguridad();" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                        <span>
+                                            <img src="/Content/Template/Imagenes/Icons/locked-padlock24.png">
+                                            Seguridad
+                                        </span>
+                                    </a>
+
+
+                                    <ul class="collapse list-unstyled" id="seguridadSubmenu">
+                                        <li class="mifont">
+                                            <a href="@Url.Action("Index","Account")" id="listadousuariostexto">Listado Usuarios</a>
+                                        </li>
+                                        <li class="mifont">
+                                            <a href="@Url.Action("Asignar","Roles")" id="crearusuariostexto">Asignar Roles</a>
+                                        </li>
+                                        <li class="mifont">
+                                            <a href="@Url.Action("index","Roles")" id="crearrolestexto">Listado Roles</a>
+                                        </li>
+                                    </ul>
+
+
+                                </li>
+                            }
+                        }
+
+                    </ul>
+                </nav>
+
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+
+        <div id="content">
+            <div id="content">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+
+                        @*<button type="button" id="sidebarCollapse" class="btn btn-info">
+            <i class="fas fa-align-left"></i>
+            <span></span>
+        </button>*@
+
+                        @*<a class="button switch" id="sidebarCollapse">
+            <div class="arrow"></div>
+        </a>*@
+
+                        <div id="sidebarCollapse">
+                            <div id="nav-icon3" class="open">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+        @RenderBody()
+
+
+    </div>
+    <footer>
+        <p>© 2018 Copyright Creative Information Technologies <a style="color:#02779d" href="http://www.cit.hn/" target="_blank">CIT</a></p>
+    </footer>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    @Styles.Render("~/Content/CSS/Sidebar.css")
+    @Styles.Render("~/Content/CSS/Styles.css")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/pluginsAdmin")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @Styles.Render("~/Content/CSS/Sidebar.css")
+
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Styles.Render("~/Content/CSS/botonFlecha.css")
+
+
+
+
+</body>
+
+</html>
+
+
+<script>
+    $(document).ready(function () {
+        $('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function () {
+            $(this).toggleClass('open');
+        });
+    });
+</script>
+
+
+@*<script>
+    $(".button").click(function () {
+        $(this).toggleClass("right");
+    });
+</script>*@
+
+<script>
+    $(document).ready(function () {
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+
+    });
+
+    function AbrirProductos() {
+        $(function () {
+            document.getElementById('categoriatexto').style.color = 'grey';
+            document.getElementById('productotexto').style.color = 'grey';
+
+            var mantenimiento = document.getElementById("mantenimientoSubmenu").getAttribute("aria-expanded");
+            if (mantenimiento == "true") {
+                $("#mantenimientoSubmenu").collapse('toggle');
+                document.getElementById('idiomatexto').style.color = 'white';
+            }
+
+            var configuracion = document.getElementById("configuracionSubmenu").getAttribute("aria-expanded");
+            if (configuracion == "true") {
+                $("#configuracionSubmenu").collapse('toggle');
+                document.getElementById('generalestexto').style.color = 'white';
+                document.getElementById('etiquetastexto').style.color = 'white';
+                document.getElementById('carruseltexto').style.color = 'white';
+            }
+
+            var noticia = document.getElementById("noticiaSubmenu").getAttribute("aria-expanded");
+            if (noticia == "true") {
+                $("#noticiaSubmenu").collapse('toggle');
+                document.getElementById('anunciostexto').style.color = 'white';
+            }
+
+            var seguridad = document.getElementById("seguridadSubmenu").getAttribute("aria-expanded");
+            if (seguridad == "true") {
+                $("#seguridadSubmenu").collapse('toggle');
+                document.getElementById('listadousuariostexto').style.color = 'white';
+                document.getElementById('crearusuariostexto').style.color = 'white';
+                document.getElementById('crearrolestexto').style.color = 'white';
+            }
+
+        })
+    }
+
+
+
+
+
+    function AbrirMantenimiento() {
+        $(function () {
+            document.getElementById('idiomatexto').style.color = 'grey';
+
+            var producto = document.getElementById("productoSubmenu").getAttribute("aria-expanded");
+            if (producto == "true") {
+                $("#productoSubmenu").collapse('toggle');
+                document.getElementById('categoriatexto').style.color = 'white';
+                document.getElementById('productotexto').style.color = 'white';
+            }
+
+            var configuracion = document.getElementById("configuracionSubmenu").getAttribute("aria-expanded");
+            if (configuracion == "true") {
+                $("#configuracionSubmenu").collapse('toggle');
+                document.getElementById('generalestexto').style.color = 'white';
+                document.getElementById('etiquetastexto').style.color = 'white';
+                document.getElementById('carruseltexto').style.color = 'white';
+            }
+
+            var noticia = document.getElementById("noticiaSubmenu").getAttribute("aria-expanded");
+            if (noticia == "true") {
+                $("#noticiaSubmenu").collapse('toggle');
+                document.getElementById('anunciostexto').style.color = 'white';
+            }
+
+            var seguridad = document.getElementById("seguridadSubmenu").getAttribute("aria-expanded");
+            if (seguridad == "true") {
+                $("#seguridadSubmenu").collapse('toggle');
+                document.getElementById('listadousuariostexto').style.color = 'white';
+                document.getElementById('crearusuariostexto').style.color = 'white';
+                document.getElementById('crearrolestexto').style.color = 'white';
+            }
+
+        }
+
+
+        )
+    }
+
+
+
+
+
+
+    function AbrirConfiguracion() {
+        $(function () {
+
+            document.getElementById('generalestexto').style.color = 'grey';
+            document.getElementById('etiquetastexto').style.color = 'grey';
+            document.getElementById('carruseltexto').style.color = 'grey';
+
+
+            var producto = document.getElementById("productoSubmenu").getAttribute("aria-expanded");
+            if (producto == "true") {
+                $("#productoSubmenu").collapse('toggle');
+                document.getElementById('categoriatexto').style.color = 'white';
+                document.getElementById('productotexto').style.color = 'white';
+            }
+
+            var configuracion = document.getElementById("mantenimientoSubmenu").getAttribute("aria-expanded");
+            if (configuracion == "true") {
+                $("#mantenimientoSubmenu").collapse('toggle');
+                document.getElementById('idiomatexto').style.color = 'white';
+            }
+
+            var noticia = document.getElementById("noticiaSubmenu").getAttribute("aria-expanded");
+            if (noticia == "true") {
+                $("#noticiaSubmenu").collapse('toggle');
+                document.getElementById('anunciostexto').style.color = 'white';
+            }
+
+            var seguridad = document.getElementById("seguridadSubmenu").getAttribute("aria-expanded");
+            if (seguridad == "true") {
+                $("#seguridadSubmenu").collapse('toggle');
+                document.getElementById('listadousuariostexto').style.color = 'white';
+                document.getElementById('crearusuariostexto').style.color = 'white';
+                document.getElementById('crearrolestexto').style.color = 'white';
+            }
+
+        }
+
+
+        )
+    }
+
+
+
+
+
+
+    function AbrirNoticia() {
+        $(function () {
+            document.getElementById('anunciostexto').style.color = 'grey';
+
+            var producto = document.getElementById("productoSubmenu").getAttribute("aria-expanded");
+            if (producto == "true") {
+                $("#productoSubmenu").collapse('toggle');
+                document.getElementById('categoriatexto').style.color = 'white';
+                document.getElementById('productotexto').style.color = 'white';
+            }
+
+            var configuracion = document.getElementById("mantenimientoSubmenu").getAttribute("aria-expanded");
+            if (configuracion == "true") {
+                $("#configuracionSubmenu").collapse('toggle');
+                document.getElementById('idiomatexto').style.color = 'white';
+            }
+
+            var configuracion = document.getElementById("configuracionSubmenu").getAttribute("aria-expanded");
+            if (configuracion == "true") {
+                $("#configuracionSubmenu").collapse('toggle');
+                document.getElementById('generalestexto').style.color = 'white';
+                document.getElementById('etiquetastexto').style.color = 'white';
+                document.getElementById('carruseltexto').style.color = 'white';
+            }
+
+            var seguridad = document.getElementById("seguridadSubmenu").getAttribute("aria-expanded");
+            if (seguridad == "true") {
+                $("#seguridadSubmenu").collapse('toggle');
+                document.getElementById('listadousuariostexto').style.color = 'white';
+                document.getElementById('crearusuariostexto').style.color = 'white';
+                document.getElementById('crearrolestexto').style.color = 'white';
+            }
+
+        }
+
+
+        )
+    }
+
+
+
+
+
+
+    function AbrirSeguridad() {
+        $(function () {
+            document.getElementById('listadousuariostexto').style.color = 'grey';
+            document.getElementById('crearusuariostexto').style.color = 'grey';
+            document.getElementById('crearrolestexto').style.color = 'grey';
+
+            var producto = document.getElementById("productoSubmenu").getAttribute("aria-expanded");
+            if (producto == "true") {
+                $("#productoSubmenu").collapse('toggle');
+                document.getElementById('categoriatexto').style.color = 'white';
+                document.getElementById('productotexto').style.color = 'white';
+            }
+
+            var configuracion = document.getElementById("mantenimientoSubmenu").getAttribute("aria-expanded");
+            if (configuracion == "true") {
+                $("#configuracionSubmenu").collapse('toggle');
+                document.getElementById('idiomatexto').style.color = 'white';
+            }
+
+            var configuracion = document.getElementById("configuracionSubmenu").getAttribute("aria-expanded");
+            if (configuracion == "true") {
+                $("#configuracionSubmenu").collapse('toggle');
+                document.getElementById('generalestexto').style.color = 'white';
+                document.getElementById('etiquetastexto').style.color = 'white';
+                document.getElementById('carruseltexto').style.color = 'white';
+            }
+
+            var noticia = document.getElementById("noticiaSubmenu").getAttribute("aria-expanded");
+            if (noticia == "true") {
+                $("#noticiaSubmenu").collapse('toggle');
+                document.getElementById('anunciostexto').style.color = 'white';
+            }
+
+        }
+
+
+        )
+    }
+
+    setTimeout(function () {
+        $('#preloader').fadeOut();
+        $('.preloader_img').delay(150).fadeOut('slow');
+    }, 1000);
+
+</script>
+
+<script>
+    // This code dosen't works on Firefox and IE and works on other browesers.
+    $(document).ready(function () {
+        $('.animated-icon1,.animated-icon3,.animated-icon4').click(function () {
+            $(this).toggleClass('open');
+        });
+    });
+
+    // Works everywhere
+    $(document).ready(function () {
+
+        // Hide/show animation hamburger function
+        $('.navbar-toggler').on('click', function () {
+
+            // Take this line to first hamburger animations
+            $('.animated-icon1').toggleClass('open');
+
+            // Take this line to second hamburger animation
+            $('.animated-icon3').toggleClass('open');
+
+            // Take this line to third hamburger animation
+            $('.animated-icon4').toggleClass('open');
+        });
+
+    });
+</script>
+
+
+
+
+
+@*
+    EL DE HAMBURGUESA
+*@
+
+@*<body>
+        <nav class="menu">
+            <header>Menu <span>×</span></header>
+            <ol>
+                <li class="menu-item"><a href="#0">Home</a></li>
+                <li class="menu-item"><a href="#0">About</a></li>
+                <li class="menu-item">
+                    <a href="#0">Widgets</a>
+                    <ol class="sub-menu">
+                        <li class="menu-item"><a href="#0">Big Widgets</a></li>
+                        <li class="menu-item"><a href="#0">Bigger Widgets</a></li>
+                        <li class="menu-item"><a href="#0">Huge Widgets</a></li>
+                    </ol>
+                </li>
+                <li class="menu-item">
+                    <a href="#0">Kabobs</a>
+                    <ol class="sub-menu">
+                        <li class="menu-item"><a href="#0">Shishkabobs</a></li>
+                        <li class="menu-item"><a href="#0">BBQ kabobs</a></li>
+                        <li class="menu-item"><a href="#0">Summer kabobs</a></li>
+                    </ol>
+                </li>
+                <li class="menu-item"><a href="#0">Contact</a></li>
+            </ol>
+            <footer><button aria-label="Toggle Menu">Toggle</button></footer>
+        </nav>
+    </body>
+
+    <script>
+        var $els = $('.menu a, .menu header');
+        var count = $els.length;
+        var grouplength = Math.ceil(count / 3);
+        var groupNumber = 0;
+        var i = 1;
+        $('.menu').css('--count', count + '');
+        $els.each(function (j) {
+            if (i > grouplength) {
+                groupNumber++;
+                i = 1;
+            }
+            $(this).attr('data-group', groupNumber);
+            i++;
+        });
+
+        $('.menu footer button').on('click', function (e) {
+            e.preventDefault();
+            $els.each(function (j) {
+                $(this).css('--top', $(this)[0].getBoundingClientRect().top + ($(this).attr('data-group') * -15) - 20);
+                $(this).css('--delay-in', j * .1 + 's');
+                $(this).css('--delay-out', (count - j) * .1 + 's');
+            });
+            $('.menu').toggleClass('closed');
+            e.stopPropagation();
+        });
+
+        // run animation once at beginning for demo
+        setTimeout(function () {
+            $('.menu footer button').click();
+            setTimeout(function () {
+                $('.menu footer button').click();
+            }, (count * 100) + 500);
+        }, 1000);
+    </script>*@

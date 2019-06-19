@@ -1,0 +1,121 @@
+﻿@model UltimateLabs.Web.Models.TipoBulletAdminViewModel
+
+@Scripts.Render("~/bundles/jqueryval")
+@Styles.Render("~/ThemeAdmin/css")
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Roboto" rel="stylesheet">
+    @Styles.Render("~/Content/CSS/Styles.css")
+    @Styles.Render("~/Content/basic.css")
+    @Styles.Render("~/Content/dropzone.css")
+    <script src="~/Scripts/jquery.filedrop.js"></script>
+    <link rel="stylesheet" href="~/Content/basic.css" />
+    <link rel="stylesheet" href="~/Content/dropzone.css" />
+    <script src="~/Scripts/dropzone.js"></script>
+</head>
+
+<section>
+    @using (Html.BeginForm("CrearBullet", "TipoBullet", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        
+        @Html.AntiForgeryToken()
+
+        <div class="col-sm-5 contenedor" style="margin-left:2%;margin-top:5%;background-color:white">
+            <fieldset>
+                <legend style="font-family:'Roboto',sans-serif">
+                    Agregar
+                </legend>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Label("Nombre", new { @class = "col-sm-12 control-label labelText" })
+                        <div class="col-sm-12">
+                            @Html.TextAreaFor(x => x.NombreBullet, new { @class = "form-control m-bottom-5", @id = "valor", @required = "true" })
+                            @Html.ValidationMessageFor(x => x.NombreBullet, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-10 col-xs-12 bg-white m-top-5percent">
+                    <div class="contenedor col-sm-12" style="margin-left:1%">
+
+                        <div action="~/TipoBullet/Upload" method="post" enctype="multipart/form-data" class="col-sm-12 dropzone" id="dropzoneForm" style="width: 100%; background: none; border: none;">
+                            <div class="fallback">
+                                <input type="file" id="file" name="file" value="file" accept=".svg"/>
+
+                            </div>
+                            <div class="text-right">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                @*<div class="row">
+                    <div class="col-sm-12">
+                        @Html.Label("Ícono", new { @class = "col-sm-12 control-label labelText m-top-5" })
+                        <div class="col-md-12">
+                            <input type="file" id="Icono" form-control" name="Icono" onchange="jQuery(this).next('input').val(this.value);" accept=".xlsx,.xls,image/*,.doc, .docx.,.ppt, .pptx,.txt,.pdf" />
+                            @Html.TextBoxFor(x => x.PathIcon, new { @class = "form-control", @readonly = "true" })
+                        </div>
+                    </div>
+                </div>*@
+
+                <div class="col-sm-12">
+                    <div class="pull-right">
+                        <button style="margin-bottom:2%;margin-top:10%;background-color:#2e2929;height:100%;width:auto" type="submit" class="btn btn-raised btn-inverse">Guardar<span class="md-ripple"></span></button>
+                    </div>
+
+
+                </div>
+
+            </fieldset>
+        </div>
+    }
+
+</section>
+
+
+<script>
+
+
+
+    $('#crudModal').on('shown.bs.modal', function () {
+        $('#btCloseModal').trigger('focus')
+    })
+
+</script>
+
+
+    <script>
+    var currentFile = null;
+    Dropzone.autoDiscover = false;
+    var DropzoneImg = new Dropzone("div#dropzoneForm", {
+        addRemoveLinks: true,
+        //url: "#",
+        maxFiles: 1,
+        //dictDefaultMessage: "Agregar Imagen",
+        //dictRemoveFile: "Remover Imagen",
+        //dictCancelUpload: "Cancelar",
+        //dictFileTooBig: "La imagen es muy grande",
+        //dictMaxFilesExceeded: "Demasiados archivos",
+        //thumbnailHeight: 120,
+        //thumbnailWidth: 120,
+        //thumbnailMethod: "contain",
+        init: function () {
+            this.on("addedfile", function (file) {
+                if (currentFile) {
+                    this.removeFile(currentFile);
+                }
+                currentFile = file;
+            });
+        }
+    });
+</script>
+

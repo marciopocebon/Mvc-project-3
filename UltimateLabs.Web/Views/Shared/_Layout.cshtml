@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - UltimateLabs</title>
+
+    <script src="~/Content/Template/js/jquery.min.js"></script>
+    @Styles.Render("~/Theme/css")
+   
+    @*<link rel="stylesheet" type="text/css" href="~/Content/Template/css/StyleC.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/Template/css/skin-1.css">*@
+    
+</head>
+<body>
+
+        <div class="loader-backdrop">
+            <!-- Loader -->
+            <div class="loader">
+            </div>
+        </div>
+   
+        <div>
+            @{ Html.RenderAction("Header", "Home");
+
+            }
+        </div>
+
+        <div class="main-container">
+            @RenderBody()
+
+
+            <footer class="footer-3">
+                <!-- Footer Style 3 -->
+                <div class="footer-pri pt-0 pb-0">
+                    <!-- Primary Footer -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2 text-center">
+                                <div class="widget widget-about">
+
+                                    <ul class="social">
+                                        <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href=""><i class="fa fa-vimeo"></i></a></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-sec">
+                    <!-- Secondary Footer -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                @*<p class="copyright">&copy; 2018 Copyright Creative Information Technologies</p>*@
+
+                                <span>© 2018 Copyright ULTIMATE INTERNATIONAL, INC. <br />Developed by Creative Information Technologies </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <div id="back" style="display: block;"><i class="fa fa-angle-up"></i></div>
+        </div>
+   
+        @*@Scripts.Render("~/bundles/jquery")*@
+        @Scripts.Render("~/bundles/Scripts")
+        @*@Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")*@
+        @RenderSection("scripts", required: false)
+</body>
+</html>

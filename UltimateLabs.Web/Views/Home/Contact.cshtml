@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+
+<div class="content-area">
+    @*class="content-area bg-white"*@
+    <div class="col-md-12 text-center section-head">
+        <h2 class="h2"><b>@TempData["Contact"]</b></h2>
+        <div class="dez-separator bg-primary"></div>
+        @*<p>@TempData["Exp1"]</p>
+        <p style="padding-top:0px">@TempData["Exp2"]</p>*@
+    </div>
+
+    @*<div class="container" style="margin-top:15px">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+
+
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+
+                    <div class="text-left" style="margin-left:40px">
+                        <img src="~/Content/Template/Imagenes/Icons/honduras.svg" style="width:50px;height:50px;" />
+
+                        <i class="fa fa-phone"></i> <span>+504 25567090</span>
+                        <br />
+                        <p>
+                            4631 North Dixie Hwy
+                            Boca Raton, FL 33431 USA
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="text-left" style="margin-left:40px">
+                        <img src="~/Content/Template/Imagenes/Icons/usa.svg" style="width:50px;height:50px;" />
+
+                        <i class="fa fa-phone"></i> <span>+1 561-347-1531</span>
+                        <br />
+                        <p>
+                            4631 North Dixie Hwy
+                            Boca Raton, FL 33431 USA
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+    </div>*@
+
+    <div class="container-contact100">
+         <div class="wrap-contact100">
+                <div class="contact100-form-title" style="background-image: url(../../Content/Template/Imagenes/bg-01.jpg);">
+                    <p style="color:white">@TempData["Exp1"]</p>
+                    <p style="padding-top:0px;color:white">@TempData["Exp2"]</p>
+
+                </div>
+
+                <form class="contact100-form validate-form">
+                    <div class="wrap-input100 validate-input" data-validate="Name is required">
+                    
+                        <span class="label-input100">     <img src="~/Content/Template/Imagenes/Icons/user.png" />@*Full Name:*@</span>
+                        <input class="input100" type="text" name="name" placeholder='@TempData["Nombre"]' style="border:none">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <span class="label-input100"> <img src="~/Content/Template/Imagenes/Icons/envelope.png" /></span>
+                        <input class="input100" type="text" name="email" placeholder='@TempData["Email"]' style="border:none">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Phone is required">
+                        <span class="label-input100"><img src="~/Content/Template/Imagenes/Icons/call.png" /></span>
+                        <input class="input100" type="text" name="phone" placeholder='@TempData["Asunto"]'  style="border:none">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Message is required">
+                        <span class="label-input100"><img src="~/Content/Template/Imagenes/Icons/send.png" /></span>
+                        <textarea class="input100" name="message" placeholder='@TempData["Mensaje"]' style="border:none"></textarea>
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="text-center">   <button class="btn btn-primary" type="submit" name="submit"><i class="fa fa-paper-plane"></i>@TempData["Enviar"]</button></div>
+
+                 
+                </form>
+            </div>
+     
+
+
+
+    </div>
+
+
+
+</div>

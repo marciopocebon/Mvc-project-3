@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "IndexCrear";
+    Layout = "~/Views/Shared/_LayoutTry.cshtml";
+}
+
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Roboto" rel="stylesheet">
+    @Styles.Render("~/Content/CSS/Styles.css")
+    @Styles.Render("~/Content/basic.css")
+    @Styles.Render("~/Content/dropzone.css")
+    @Scripts.Render("~/Scripts/dropzone.js")
+    <script src="~/Scripts/jquery.filedrop.js"></script>
+    <link rel="stylesheet" href="~/Content/basic.css" />
+    <link rel="stylesheet" href="~/Content/dropzone.css" />
+    <script src="~/Scripts/dropzone.js"></script>
+</head>
+
+
+
+
+
+<form action="~/ProductoAdmin/Upload" class="dropzone" id="my-awesome-dropzone">
+    <div class="fallback">
+        <input name="file" type="file" multiple />
+    </div>
+</form>
+
+<script>
+    var myDropzone = new Dropzone("div#my-awesome-dropzone", { url: "/ProductoAdmin/Dropzone" });
+    myDropzone.createThumbnailFromUrl(file, imageUrl, callback, crossOrigin);
+
+    // Create the mock file:
+    var mockFile = { name: "pill.jpg", size: 12345 };
+
+    // Call the default addedfile event handler
+    myDropzone.emit("pill.jpg", mockFile);
+
+    // And optionally show the thumbnail of the file:
+    myDropzone.emit("thumbnail", mockFile, "C:\Users\User\Desktop\images\pill.jpg");
+    // Or if the file on your server is not yet in the right
+    // size, you can let Dropzone download and resize it
+    // callback and crossOrigin are optional.
+    myDropzone.createThumbnailFromUrl(file, imageUrl, callback, crossOrigin);
+
+    // Make sure that there is no progress bar, etc...
+    myDropzone.emit("complete", mockFile);
+
+    // If you use the maxFiles option, make sure you adjust it to the
+    // correct amount:
+    var existingFileCount = 1; // The number of files already uploaded
+    myDropzone.options.maxFiles = myDropzone.options.maxFiles - existingFileCount;
+
+</script>
+
+<script src="~/scripts/jquery-1.10.2.min.js"></script>

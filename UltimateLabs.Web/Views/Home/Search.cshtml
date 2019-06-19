@@ -1,0 +1,74 @@
+﻿@model IEnumerable<UltimateLabs.Web.Models.ConfiguracionesViewModel>
+
+
+<div class="faq pt-60 pb-60" style="background-image:url('../../Content/Template/Imagenes/Upload/MedicalBck.jpg');">
+    <div class="container">
+
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                //if (item.CodigoConfiguracion == "FA" || item.CodigoConfiguracion == "MV" || item.CodigoConfiguracion == "P")
+                if (item.CodigoConfiguracion == "P")
+                {
+                    <div class="row">
+                        <div class="col-md-12 text-center section-head">
+                            <h2 class="h2" style="color:black"><b>@item.NombreConfiguracion</b></h2>
+                            <div class="dez-separator bg-primary"></div>
+                            <div class="clear"></div>
+                            <p style="font-size:15px">@item.Valor</p>
+
+                            <a href="@Url.Action("Index","Products")" class="btn btn-primary">
+                                <b> See all products</b>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-12 mt-20">
+                            <div class="logo-slider">
+                                <div class="slider-items">
+                                    <div>
+                                        <img src="~/Content/Template/Imagenes/Upload/Carousel/Bencobal.png" alt="">
+                                    </div>
+                                    <div>
+                                        <img src="~/Content/Template/Imagenes/Upload/Carousel/ultifenolplus.png" alt="">
+                                    </div>
+                                    <div>
+                                        <img src="~/Content/Template/Imagenes/Upload/Carousel/Bencobal.png" alt="">
+                                    </div>
+                                    <div>
+                                        <img src="~/Content/Template/Imagenes/Upload/Carousel/ultifenolplus.png" alt="">
+                                    </div>
+                                    <div>
+                                        <img src="~/Content/Template/Imagenes/Upload/Carousel/Bencobal.png" alt="">
+                                    </div>
+                                    <div>
+                                        <img src="~/Content/Template/Imagenes/Upload/Carousel/ultifenolplus.png" alt="">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                }
+
+
+
+
+
+            }
+        }
+
+
+
+
+
+
+    </div>
+</div>
+
+
+

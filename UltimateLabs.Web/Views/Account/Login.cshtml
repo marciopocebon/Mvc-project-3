@@ -1,0 +1,134 @@
+﻿@using UltimateLabs.Web.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+@Styles.Render("~/Content/CSS/Login.css")
+@Styles.Render("~/Content/CSS/Styles.css")
+
+@{
+    Layout = null;
+}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="~/Content/Template/Imagenes/LogoUltimate.jpg">
+    <link rel="shortcut icon" href="~/Content/Imgs/bglogin.jpg">
+    <link rel="shortcut icon" href="~/Content/Imgs/bglogin2.jpg">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="cont">
+        <div class="demo">
+            <div class="login">
+                <div>
+                    <img id="img_logo" alt="Logo" src="@Url.Content("~/Content/Imgs/ULlogo.png")" class="m-left-5percent m-top-5percent" />
+                </div>
+                <div class="login__form">
+                    <div class="login__row">
+                        <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+                            <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+                        </svg>
+                        @Html.TextBoxFor(m => m.Username, new { @class = "login__input name", @placeholder = "Username" })
+
+                        @*<input type="text" class="login__input name" placeholder="Username" />*@
+                    </div>
+                    <div class="login__row">
+                        <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+                            <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
+                        </svg>
+                        @Html.PasswordFor(m => m.Password, new { @class = "login__input pass", @placeholder = "Password" })
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        @*<input type="password" class="login__input pass" placeholder="Password" />*@
+                    </div>
+                    <input type="submit" value="Log in" class="login__submit" />
+
+                    @*<button type="button" class="login__submit">Sign in</button>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+
+        var animating = false,
+            submitPhase1 = 1300,
+            submitPhase2 = 300,
+            logoutPhase1 = 800,
+            $login = $(".login"),
+            $app = $(".app");
+
+        function ripple(elem, e) {
+            $(".ripple").remove();
+            var elTop = elem.offset().top,
+                elLeft = elem.offset().left,
+                x = e.pageX - elLeft,
+                y = e.pageY - elTop;
+            var $ripple = $("<div class='ripple'></div>");
+            $ripple.css({ top: y, left: x });
+            elem.append($ripple);
+        };
+
+        $(document).on("click", ".login__submit", function (e) {
+            if (animating) return;
+            animating = true;
+            var that = this;
+            ripple($(that), e);
+            $(that).addClass("processing");
+            setTimeout(function () {
+                $(that).addClass("success");
+                setTimeout(function () {
+                    $app.show();
+                    $app.css("top");
+                    $app.addClass("active");
+                }, submitPhase2 - 70);
+                setTimeout(function () {
+                    $login.hide();
+                    $login.addClass("inactive");
+                    animating = false;
+                    $(that).removeClass("success processing");
+                }, submitPhase2);
+            }, submitPhase1);
+
+        });
+
+        $(document).on("click", ".app__logout", function (e) {
+            if (animating) return;
+            $(".ripple").remove();
+            animating = true;
+            var that = this;
+            $(that).addClass("clicked");
+            setTimeout(function () {
+                $app.removeClass("active");
+                $login.show();
+                $login.css("top");
+                $login.removeClass("inactive");
+            }, logoutPhase1 - 120);
+            setTimeout(function () {
+                $app.hide();
+                animating = false;
+                $(that).removeClass("clicked");
+            }, logoutPhase1);
+        });
+
+    });
+</script>

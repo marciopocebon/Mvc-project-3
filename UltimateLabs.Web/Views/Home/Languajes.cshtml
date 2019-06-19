@@ -1,0 +1,23 @@
+﻿@model IEnumerable<UltimateLabs.Web.Models.IdiomasViewModel>
+
+
+<div class="languajesdiv">
+    @if (Model != null)
+    {
+        int con = 1;
+
+    <ul class="list-inline">
+        @foreach (var item in Model)
+        {
+            <li style="color:white!important"> <a href='@Url.Action("ChangeLanguaje","Home",new {Id=item.IdIdioma })' style="color:white"> <b> @item.Abreviatura</b></a></li>
+            if (con == 1) {
+            <li style="color:white"> <span>|</span></li>
+            }
+            con += 1;
+        }
+    </ul>
+
+    }
+</div>
+
+

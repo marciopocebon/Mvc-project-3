@@ -1,0 +1,98 @@
+﻿@model IEnumerable<UltimateLabs.Web.Models.SliderViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<section>
+
+    @if (Model != null)
+    {
+        int contador = 1;
+        <div class="rev_slider_wrapper fullwidthbanner-container">
+            <div id="slider-1" class="rev_slider" style="display:none;" data-version="5.0.7">
+
+
+                <ul>
+
+                    @foreach (var item in Model)
+                    {
+                        string index = "slider-layer" + contador;
+                        if (contador % 2 != 0)
+                        {
+                            <li data-index='@index' data-transition="slideright" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-saveperformance="off">
+
+                                <!-- MAIN IMAGE -->
+                                <img src="~/Content/Template/images/dummy.jpg" data-lazyload='@item.PathImg' alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+
+                                <!-- Small Text -->
+                                <div class="tp-caption tp-resizeme rs-parallaxlevel-0" data-x="['left','left','left','left']" data-hoffset="['50','50','50','30']" data-y="['middle','middle','middle','middle']" data-voffset="['-60','-60','-60','-60']" data-width="none" data-fontsize="['18', '18', '16', '14']" data-height="28" data-color="['#1696e7']" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:0;y:0;s:inherit;e:inherit;" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 10; white-space: nowrap; font-weight:700; text-transform: uppercase;">
+                                    <h6 class="FrasesHeader">  @item.Titulo</h6>
+                                </div>
+
+                                <!-- Main Text -->
+                                <div class="tp-caption tp-resizeme rs-parallaxlevel-0" data-x="['left','left','left','left']" data-hoffset="['50','50','50','30']" data-y="['middle','middle','middle','middle']" data-voffset="['20','20','20','20']" data-fontsize="['40','40','36','30']" data-lineheight="['55','55','55','35']" data-color="['#1a1a1a']" data-width="['600','600','600','420']" data-height="120" data-whitespace="normal" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:0;y:0;s:inherit;e:inherit;" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 11; min-width: 600px; max-width: 600px; font-weight:700; white-space: normal; text-transform:capitalize; text-align:left;"><h4 class="FrasesImg">@item.Frase</h4></div>
+
+                                <!-- Button -->
+                                <a href="#" class="tp-caption btn btn-primary rs-parallaxlevel-0 tp-resizeme" data-x="['left','left','left','left']" data-hoffset="['53','53','53','30']" data-y="['middle','middle','middle','middle']" data-voffset="['120','120','100','90']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;" data-mask_out="x:0;y:0;" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-responsive="on" style="z-index: 12;">READ MORE </a>
+
+
+                            </li>
+                            contador = contador + 1;
+                        }
+                        else
+                        {
+                            <li data-index='@index' data-transition="slideright" data-easein="default" data-easeout="default" data-masterspeed="default" data-saveperformance="off" data-title="A STUDY ON HAPPINESS" data-description="Nurturing the most awesome minds.">
+
+                                <!-- MAIN IMAGE -->
+                                <img src="~/Content/Template/images/dummy.jpg" data-lazyload='@item.PathImg' alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+
+                                <!-- Small Text -->
+                                <!-- Small Text -->
+                                <div class="tp-caption tp-resizeme rs-parallaxlevel-0" data-x="['right','right','right','right']" data-hoffset="['50','50','50','30']" data-y="['middle','middle','middle','middle']" data-voffset="['-60','-60','-60','-60']" data-width="none" data-fontsize="['18', '18', '16', '14']" data-height="28" data-color="['#1696e7']" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:0;y:0;s:inherit;e:inherit;" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 10; white-space: nowrap; font-weight:700; text-transform: uppercase;">  <h6 class="FrasesHeader">  @item.Titulo</h6></div>
+
+                                <!-- Main Text -->
+                                <div class="tp-caption tp-resizeme rs-parallaxlevel-0" data-x="['right','right','right','right']" data-hoffset="['50','50','50','30']" data-y="['middle','middle','middle','middle']" data-voffset="['20','20','20','20']" data-fontsize="['40','40','36','30']" data-lineheight="['55','55','55','35']" data-color="['#1a1a1a']" data-width="['600','600','600','420']" data-height="120" data-whitespace="normal" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:0;y:0;s:inherit;e:inherit;" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-textAlign="right" style="z-index: 11; min-width: 600px; max-width: 600px; font-weight:700; white-space: normal; text-transform:capitalize; text-align:right;"><h4 class="FrasesImg">@item.Frase</h4></div>
+
+                                <!-- Button -->
+                                <a href="#" class="tp-caption btn btn-primary rs-parallaxlevel-0 tp-resizeme" data-x="['right','right','right','right']" data-hoffset="['53','53','53','30']" data-y="['middle','middle','middle','middle']" data-voffset="['120','120','100','90']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;" data-mask_out="x:0;y:0;" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-responsive="on" style="z-index: 12;">READ MORE </a>
+
+
+                            </li>
+                            contador = contador + 1;
+
+                        }
+                    }
+
+
+
+                </ul>
+            </div>
+        </div>
+    }
+
+    <section id="about" style="background-color:#f7f7f7" data-anijs="if: scroll, on:window, do: bounceInLeft animated, before: scrollReveal, after: removeAnim">
+        @{ Html.RenderAction("About");
+
+        }
+    </section>
+
+    <section style="background-color:#f7f7f7" class="success" id="intro">
+        @{
+            Html.RenderAction("Search", "Home");
+        }
+    </section>
+    @*data-anijs="if: scroll, on:window, do: flipInY animated, before: scrollReveal, after: removeAnim"*@
+    @*data-anijs="if: scroll, on:window, do: rollIn animated, before: scrollReveal, after: removeAnim"*@
+    <section id="contact" style="background-color:#f7f7f7" data-anijs="if: scroll, on:window, do: flipInY animated, before: scrollReveal, after: removeAnim">
+        @{
+            Html.RenderAction("Contact");
+        }
+    </section>
+
+
+</section>
+
+
+

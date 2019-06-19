@@ -1,0 +1,77 @@
+﻿@model UltimateLabs.Web.Models.IdiomasAdminViewModel
+
+@Scripts.Render("~/bundles/jqueryval")
+@Styles.Render("~/ThemeAdmin/css")
+@Styles.Render("~/Content/CSS/Styles.css")
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Roboto" rel="stylesheet">
+</head>
+
+<section>
+    @using (Html.BeginForm("EditarIdioma", "IdiomaAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        @Html.AntiForgeryToken()
+        <div class="col-sm-5 contenedor" style="margin-left:2%;margin-top:5%;background-color:white">
+            <br />
+            <fieldset>
+                <legend style="font-family:'Roboto',sans-serif">
+                    Editar
+                </legend>
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Label("Idioma", new { @class = "col-sm-12 control-label", @style = "text-align:left;font-family:'Roboto',sans-serif;font-size:18px" })
+                        <div class="col-sm-12">
+                            @Html.TextAreaFor(x => x.Idioma, new { @class = "form-control", @id = "valorIdioma" })
+                            @Html.ValidationMessageFor(x => x.Idioma, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Label("Abreviatura", new { @class = "col-sm-12 control-label", @style = "text-align:left;font-family:'Roboto',sans-serif;font-size:18px" })
+                        <div class="col-sm-12">
+                            @Html.TextAreaFor(x => x.Abreviatura, new { @class = "form-control", @id = "valorAbreviatura" })
+                            @Html.ValidationMessageFor(x => x.Abreviatura, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="pull-right">
+                        <button style="margin-bottom:2%;margin-top:5%;background-color:#2e2929;height:100%;width:auto" type="submit" class="btn btn-raised btn-inverse">Guardar<span class="md-ripple"></span></button>
+                        <button style="margin-bottom:2%;margin-top:5%;background-color:#02779d;height:100%;width:auto" type="button" id="cancel" onclick="location.href='@Url.Action("Index", "IdiomaAdmin")'" class="btn btn-raised btn-inverse">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+
+            </fieldset>
+
+        </div>
+        <div class="col-sm-12" style=" height:1mm; width:1mm; padding:1mm 1mm 1mm 1mm">
+            @Html.TextBoxFor(x => x.IdIdioma, new { style = "visibility:hidden;  height:1mm; width:1mm; padding:1mm 1mm 1mm 1mm", @class = "form-control", @id = "valorIdIdioma" })
+        </div>
+    }
+</section>
+
+
+
+<script>
+
+
+
+    $('#crudModal').on('shown.bs.modal', function () {
+        $('#btCloseModal').trigger('focus')
+    })
+
+</script>
+

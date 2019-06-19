@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "IndexEditar";
+    Layout = "~/Views/Shared/_LayoutTry.cshtml";
+}
+
+<body class="fontbody">
+
+    <section style="background-color:#">
+        <h6 style="color:#02779d;margin-left:3%">Configuraciones > Carrusel</h6>
+        <div class="row">
+            <h3 style="color:#02779d;margin-left:3%" class="text-center">Carrusel</h3>
+            <div style="margin-top:-5%;margin-left:2%">
+
+                @{ Html.RenderAction("EditarCarrusel");}
+
+                @{
+                    Html.RenderAction("ListadoCarrusel");
+                }
+            </div>
+        </div>
+
+    </section>
+</body>

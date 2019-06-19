@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UltimateLabsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreCategoria" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionCategoria" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PathImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdIdioma" Type="Int32" />
+    <Property Name="IconPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Idiomas" Relationship="Self.FK__Categoria__IdIdi__5AEE82B9" FromRole="Categorias" ToRole="Idiomas" />
+    <NavigationProperty Name="Productos" Relationship="Self.FK__Productos__IdCat__628FA481" FromRole="Categorias" ToRole="Productos" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="Publicar" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Configuraciones">
+    <Key>
+      <PropertyRef Name="IdConfiguracion" />
+    </Key>
+    <Property Name="IdConfiguracion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoConfiguracion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NombreConfiguracion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionConfiguracion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Valor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="IdIdioma" Type="Int32" />
+    <Property Name="PathImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Idiomas" Relationship="Self.FK__Configura__IdIdi__5BE2A6F2" FromRole="Configuraciones" ToRole="Idiomas" />
+  </EntityType>
+  <EntityType Name="Etiquetas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodEtiqueta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionEtiqueta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Valor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="Publicar" Type="Boolean" />
+    <Property Name="IdIdioma" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Idiomas" Relationship="Self.FK__Etiquetas__IdIdi__5CD6CB2B" FromRole="Etiquetas" ToRole="Idiomas" />
+    <Property Name="multilenguaje" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Idiomas">
+    <Key>
+      <PropertyRef Name="IdIdioma" />
+    </Key>
+    <Property Name="IdIdioma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Idioma" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Abreviatura" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IconPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <NavigationProperty Name="Categorias" Relationship="Self.FK__Categoria__IdIdi__5AEE82B9" FromRole="Idiomas" ToRole="Categorias" />
+    <NavigationProperty Name="Configuraciones" Relationship="Self.FK__Configura__IdIdi__5BE2A6F2" FromRole="Idiomas" ToRole="Configuraciones" />
+    <NavigationProperty Name="Etiquetas" Relationship="Self.FK__Etiquetas__IdIdi__5CD6CB2B" FromRole="Idiomas" ToRole="Etiquetas" />
+    <NavigationProperty Name="Noticias" Relationship="Self.FK__Noticias__IdIdio__5DCAEF64" FromRole="Idiomas" ToRole="Noticias" />
+    <NavigationProperty Name="Presentaciones" Relationship="Self.FK__Presentac__IdIdi__5EBF139D" FromRole="Idiomas" ToRole="Presentaciones" />
+    <NavigationProperty Name="Productos" Relationship="Self.FK__Productos__IdIdi__6383C8BA" FromRole="Idiomas" ToRole="Productos" />
+    <NavigationProperty Name="SliderImg" Relationship="Self.FK__SliderImg__IdIdi__6477ECF3" FromRole="Idiomas" ToRole="SliderImg" />
+  </EntityType>
+  <EntityType Name="Noticias">
+    <Key>
+      <PropertyRef Name="IdNoticia" />
+    </Key>
+    <Property Name="IdNoticia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionCorta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionLarga" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Autor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PathPortada" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdIdioma" Type="Int32" />
+    <NavigationProperty Name="Idiomas" Relationship="Self.FK__Noticias__IdIdio__5DCAEF64" FromRole="Noticias" ToRole="Idiomas" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="Publicar" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Presentaciones">
+    <Key>
+      <PropertyRef Name="IdPresentacion" />
+    </Key>
+    <Property Name="IdPresentacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PresentacionProducto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionCorta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionLarga" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="IdIdioma" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Idiomas" Relationship="Self.FK__Presentac__IdIdi__5EBF139D" FromRole="Presentaciones" ToRole="Idiomas" />
+    <NavigationProperty Name="PresentacionXProducto" Relationship="Self.FK__Presentac__IdPre__60A75C0F" FromRole="Presentaciones" ToRole="PresentacionXProducto" />
+  </EntityType>
+  <EntityType Name="PresentacionXProducto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProducto" Type="Int32" />
+    <Property Name="IdPresentacion" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Presentaciones" Relationship="Self.FK__Presentac__IdPre__60A75C0F" FromRole="PresentacionXProducto" ToRole="Presentaciones" />
+    <NavigationProperty Name="Productos" Relationship="Self.FK__Presentac__IdPro__5FB337D6" FromRole="PresentacionXProducto" ToRole="Productos" />
+  </EntityType>
+  <EntityType Name="ProductoFotografias">
+    <Key>
+      <PropertyRef Name="IdFotografia" />
+    </Key>
+    <Property Name="IdFotografia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PathFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="Publicar" Type="Boolean" />
+    <Property Name="IdProducto" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Productos" Relationship="Self.FK__ProductoF__IdPro__619B8048" FromRole="ProductoFotografias" ToRole="Productos" />
+    <Property Name="CodigoMaestro" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreProducto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NombreComun" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionCortaProducto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionLargaProducto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Indicaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Dosis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdCategoria" Type="Int32" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="Publicar" Type="Boolean" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdIdioma" Type="Int32" />
+    <Property Name="PathImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Presentacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Categorias" Relationship="Self.FK__Productos__IdCat__628FA481" FromRole="Productos" ToRole="Categorias" />
+    <NavigationProperty Name="Idiomas" Relationship="Self.FK__Productos__IdIdi__6383C8BA" FromRole="Productos" ToRole="Idiomas" />
+    <NavigationProperty Name="PresentacionXProducto" Relationship="Self.FK__Presentac__IdPro__5FB337D6" FromRole="Productos" ToRole="PresentacionXProducto" />
+    <NavigationProperty Name="ProductoFotografias" Relationship="Self.FK__ProductoF__IdPro__619B8048" FromRole="Productos" ToRole="ProductoFotografias" />
+    <Property Name="CodigoMaestro" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SliderImg">
+    <Key>
+      <PropertyRef Name="IdImg" />
+    </Key>
+    <Property Name="IdImg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Frase" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PathImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="Publicar" Type="Boolean" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdIdioma" Type="Int32" />
+    <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Idiomas" Relationship="Self.FK__SliderImg__IdIdi__6477ECF3" FromRole="SliderImg" ToRole="Idiomas" />
+  </EntityType>
+  <Association Name="FK__Categoria__IdIdi__5AEE82B9">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="Categorias">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Productos__IdCat__628FA481">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Configura__IdIdi__5BE2A6F2">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="Configuraciones" Type="Self.Configuraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="Configuraciones">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Etiquetas__IdIdi__5CD6CB2B">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="Etiquetas" Type="Self.Etiquetas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="Etiquetas">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Noticias__IdIdio__5DCAEF64">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="Noticias" Type="Self.Noticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="Noticias">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Presentac__IdIdi__5EBF139D">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="Presentaciones" Type="Self.Presentaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="Presentaciones">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Productos__IdIdi__6383C8BA">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SliderImg__IdIdi__6477ECF3">
+    <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
+    <End Role="SliderImg" Type="Self.SliderImg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="IdIdioma" />
+      </Principal>
+      <Dependent Role="SliderImg">
+        <PropertyRef Name="IdIdioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Presentac__IdPre__60A75C0F">
+    <End Role="Presentaciones" Type="Self.Presentaciones" Multiplicity="0..1" />
+    <End Role="PresentacionXProducto" Type="Self.PresentacionXProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presentaciones">
+        <PropertyRef Name="IdPresentacion" />
+      </Principal>
+      <Dependent Role="PresentacionXProducto">
+        <PropertyRef Name="IdPresentacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Presentac__IdPro__5FB337D6">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+    <End Role="PresentacionXProducto" Type="Self.PresentacionXProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="PresentacionXProducto">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductoF__IdPro__619B8048">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+    <End Role="ProductoFotografias" Type="Self.ProductoFotografias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="ProductoFotografias">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UltimateLabsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+    <EntitySet Name="Configuraciones" EntityType="Self.Configuraciones" />
+    <EntitySet Name="Etiquetas" EntityType="Self.Etiquetas" />
+    <EntitySet Name="Idiomas" EntityType="Self.Idiomas" />
+    <EntitySet Name="Noticias" EntityType="Self.Noticias" />
+    <EntitySet Name="Presentaciones" EntityType="Self.Presentaciones" />
+    <EntitySet Name="PresentacionXProducto" EntityType="Self.PresentacionXProducto" />
+    <EntitySet Name="ProductoFotografias" EntityType="Self.ProductoFotografias" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" />
+    <EntitySet Name="SliderImg" EntityType="Self.SliderImg" />
+    <AssociationSet Name="FK__Categoria__IdIdi__5AEE82B9" Association="Self.FK__Categoria__IdIdi__5AEE82B9">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Categorias" EntitySet="Categorias" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Productos__IdCat__628FA481" Association="Self.FK__Productos__IdCat__628FA481">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Configura__IdIdi__5BE2A6F2" Association="Self.FK__Configura__IdIdi__5BE2A6F2">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Configuraciones" EntitySet="Configuraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Etiquetas__IdIdi__5CD6CB2B" Association="Self.FK__Etiquetas__IdIdi__5CD6CB2B">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Etiquetas" EntitySet="Etiquetas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Noticias__IdIdio__5DCAEF64" Association="Self.FK__Noticias__IdIdio__5DCAEF64">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Noticias" EntitySet="Noticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Presentac__IdIdi__5EBF139D" Association="Self.FK__Presentac__IdIdi__5EBF139D">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Presentaciones" EntitySet="Presentaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Productos__IdIdi__6383C8BA" Association="Self.FK__Productos__IdIdi__6383C8BA">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SliderImg__IdIdi__6477ECF3" Association="Self.FK__SliderImg__IdIdi__6477ECF3">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="SliderImg" EntitySet="SliderImg" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Presentac__IdPre__60A75C0F" Association="Self.FK__Presentac__IdPre__60A75C0F">
+      <End Role="Presentaciones" EntitySet="Presentaciones" />
+      <End Role="PresentacionXProducto" EntitySet="PresentacionXProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Presentac__IdPro__5FB337D6" Association="Self.FK__Presentac__IdPro__5FB337D6">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="PresentacionXProducto" EntitySet="PresentacionXProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductoF__IdPro__619B8048" Association="Self.FK__ProductoF__IdPro__619B8048">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="ProductoFotografias" EntitySet="ProductoFotografias" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
